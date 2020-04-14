@@ -1,1 +1,117 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@ng-select/ng-select/themes/default.theme.css";
+@import "~ngx-smart-modal/ngx-smart-modal";
+
+
+* You can add global styles to this file,
+and also import other style files */
+
+/* Animaciones */
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.fast {
+  -webkit-animation-duration: 0.4s;
+  animation-duration: 0.4s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  animation-name: fadeIn;
+}
+
+.swal2-popup {
+  font-size: 1.6rem !important;
+}
+
+.pie-pagina {
+  bottom: 0;
+  position: fixed;
+}
+
+.navbar-nav>.user-menu>.dropdown-menu {
+  width: 300px !important;
+}
+
+.navbar-nav>.user-menu>.dropdown-menu>.user-footer {
+  padding: 20px 10px 15px !important;
+}
+
+.skin-green .main-header .navbar {
+  background-color: #3a4647 !important;
+}
+
+.sombra {
+  -webkit-box-shadow: 2px 4px 10px -6px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 2px 4px 10px -6px rgba(0, 0, 0, 0.75);
+  box-shadow: 2px 4px 10px -6px rgba(0, 0, 0, 0.75) !important;
+}
+
+.color-titulo {
+  color: rgba(34, 33, 33, 0.795);
+}
+
+.marginIsquierda {
+  margin-left: 2px !important;
+
+}
+
+.d-flexbox {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  /* border: 1px solid black !important; */
+  justify-content: space-around !important;
+}
+
+.d-flexbox-padre {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.d-flexbox-padre2 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.text-color-primary {
+  color: #007bff;
+}
+
+.text-color-succes {
+  color: #28a745;
+}
+
+.text-color-danger {
+  color: #dc3545;
+}
+
+.editarEliminar {
+  font-size: 19px;
+}
+
+.borde {
+  border: 2px solid #dc3545;
+}
+
+.bg-color-danger {
+  background-color: #dc3545;
+  color: aliceblue;
+}

@@ -1,0 +1,161 @@
+ <!-- Left side column. contains the sidebar -->
+ <aside class="main-sidebar">
+   <!-- sidebar: style can be found in sidebar.less -->
+   <section class="sidebar">
+     <!-- Sidebar user panel -->
+     <div class="user-panel">
+       <div *ngIf="this.identity && this.identity.imagen" class="pull-left image">
+         <!-- Verificamos si identity exite y tambien que exista imagen -->
+         <img [src]="this.url+'user/avatar/'+this.identity.imagen" class="img-circle img-fluid" alt="Imagen de usuario">
+       </div>
+       <div class="pull-left info">
+         <p>{{ this.identity.nombres }}</p>
+         <a><i class="fa fa-circle text-success"></i> Online</a>
+       </div>
+     </div>
+     <!-- search form -->
+     <form action="#" method="get" class="sidebar-form">
+       <div class="input-group">
+         <input type="text" name="q" class="form-control" placeholder="Search...">
+         <span class="input-group-btn">
+           <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+           </button>
+         </span>
+       </div>
+     </form>
+     <!-- /.search form -->
+     <!-- sidebar menu: : style can be found in sidebar.less -->
+     <ul class="sidebar-menu" data-widget="tree">
+       <li class="header">MENU PRINCIPAL</li>
+       <li class="treeview active">
+         <a href="#">
+           <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+           <span class="pull-right-container">
+             <i class="fa fa-angle-left pull-right"></i>
+           </span>
+         </a>
+         <ul class="treeview-menu">
+           <li><a [routerLink]="[ '/navegacion/dashboard' ]"><i class="fa fa-circle-o"></i> Dashboard </a>
+           </li>
+         </ul>
+       </li>
+
+       <li class="treeview">
+         <a href="#">
+           <i class="fa fa-user"></i>
+           <span>Administradores</span>
+           <span class="pull-right-container">
+             <i class="fa fa-angle-left pull-right"></i>
+           </span>
+         </a>
+         <ul class="treeview-menu">
+           <!-- <li><a [routerLink]="[ '/usuarios' ]"><i class="fa fa-list-ul"></i> Usuarios</a> </li> -->
+           <li routerLinkActive="active"><a [routerLink]="[ '/navegacion/usuarios/lista' ]"><i
+                 class="fa fa-list-ul"></i> Ver todos</a> </li>
+           <li routerLinkActive="active"><a [routerLink]="[ '/navegacion/usuarios/agregar' ]"><i
+                 class="fa fa-plus-circle"></i> Agregar</a></li>
+           <li routerLinkActive="active"><a [routerLink]="[ '/navegacion/usuarios/perfil' ]"><i
+                 class="fa fa-wrench"></i> perfil</a></li>
+         </ul>
+       </li>
+       <!-- Eventos -->
+       <li class="treeview">
+         <a href="#">
+           <i class="fa fa-calendar"></i>
+           <span>Eventos</span>
+           <span class="pull-right-container">
+             <i class="fa fa-angle-left pull-right"></i>
+           </span>
+         </a>
+         <ul class="treeview-menu">
+           <!-- <li><a [routerLink]="[ '/usuarios' ]"><i class="fa fa-list-ul"></i> Usuarios</a> </li> -->
+           <li><a [routerLink]="[ '/navegacion/eventos/listar' ]"><i class="fa fa-list-ul"></i> Ver todos</a> </li>
+           <li><a [routerLink]="[ '/navegacion/eventos/agregar' ]"><i class="fa fa-plus-circle"></i> Agregar</a></li>
+         </ul>
+       </li>
+       <!-- Fin Eventos -->
+
+       <!-- Invitados -->
+       <li class="treeview">
+         <a href="#">
+           <i class="fa fa-user-circle"></i> <span>Invitados</span>
+           <span class="pull-right-container">
+             <i class="fa fa-angle-left pull-right"></i>
+           </span>
+         </a>
+         <ul class="treeview-menu">
+           <li routerLinkActive="active">
+             <a [routerLink]="[ '/navegacion/invitados/listar' ]"><i class="fa fa-list-ul"></i> Ver todos </a>
+           </li>
+           <li routerLinkActive="active">
+             <a [routerLink]="[ '/navegacion/invitados/agregar' ]"><i class="fa fa-plus-circle"></i> Agregar </a>
+           </li>
+         </ul>
+       </li>
+       <!--  fin Invitados -->
+
+       <!-- regalos -->
+       <li class="treeview">
+         <a href="#">
+           <i class="fa fa-gift"></i> <span>Regalos</span>
+           <span class="pull-right-container">
+             <i class="fa fa-angle-left pull-right"></i>
+           </span>
+         </a>
+         <ul class="treeview-menu">
+           <li routerLinkActive="active">
+             <a [routerLink]="[ '/navegacion/regalos' ]"><i class="fa fa-wrench"></i> Adminstrar regalos </a>
+           </li>
+         </ul>
+       </li>
+       <!--  fin regalos -->
+
+       <li class="treeview">
+         <a href="#">
+           <i class="fa fa-edit"></i> <span>Forms</span>
+           <span class="pull-right-container">
+             <i class="fa fa-angle-left pull-right"></i>
+           </span>
+         </a>
+         <ul class="treeview-menu">
+           <li><a href="../forms/general.html"><i class="fa fa-circle-o"></i> General Elements</a></li>
+           <li><a href="../forms/advanced.html"><i class="fa fa-circle-o"></i> Advanced Elements</a></li>
+           <li><a href="../forms/editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>
+         </ul>
+       </li>
+       <li class="treeview">
+         <a href="#">
+           <i class="fa fa-table"></i> <span>Tables</span>
+           <span class="pull-right-container">
+             <i class="fa fa-angle-left pull-right"></i>
+           </span>
+         </a>
+         <ul class="treeview-menu">
+           <li><a href="../tables/simple.html"><i class="fa fa-circle-o"></i> Simple tables</a></li>
+           <li><a href="../tables/data.html"><i class="fa fa-circle-o"></i> Data tables</a></li>
+         </ul>
+       </li>
+       <li>
+         <a href="../calendar.html">
+           <i class="fa fa-calendar"></i> <span>Calendar</span>
+           <span class="pull-right-container">
+             <small class="label pull-right bg-red">3</small>
+             <small class="label pull-right bg-blue">17</small>
+           </span>
+         </a>
+       </li>
+       <li>
+         <a href="../mailbox/mailbox.html">
+           <i class="fa fa-envelope"></i> <span>Mailbox</span>
+           <span class="pull-right-container">
+             <small class="label pull-right bg-yellow">12</small>
+             <small class="label pull-right bg-green">16</small>
+             <small class="label pull-right bg-red">5</small>
+           </span>
+         </a>
+       </li>
+
+     </ul>
+   </section>
+ </aside>
+ <div class="control-sidebar-bg"></div>

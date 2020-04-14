@@ -1,0 +1,162 @@
+  <!-- Content Header (Page header) -->
+  <div class="animated fadeIn fast" id="">
+
+    <section class="content-header">
+      <h1>
+        Gestion perfil de usuarios
+        <small>Llena el formulario para crear un perfil de usuario</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+        <li><a href="#">Administradores</a></li>
+        <li class="active">Perfil Usuario</li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+      <!-- Default box -->
+      <div class="box">
+        <div class="box-header with-border">
+          <h3 class="box-title color-titulo">Formulario de registro y tabla de datos</h3>
+        </div>
+        <div class="box-body">
+          <!-- Start creating your amazing application! -->
+          <!-- Main content -->
+          <section class="content">
+            <div class="row">
+              <!-- left column -->
+              <div class="col-lg-4">
+                <!-- general form elements -->
+                <div class="box box-primary sombra">
+                  <div class="box-header with-border">
+                    <h3 class="box-title color-titulo text-color-primary">Crear Perfil de Usuarios</h3>
+                  </div>
+                  <!-- /.box-header -->
+                  <!-- form start -->
+                  <form [formGroup]='this.formPerfil' (ngSubmit)="this.onSubmit()" #loginForm="ngForm" id="formPerfil"
+                    novalidate>
+                    <div class="box-body">
+                      <div class="form-group">
+                        <label for="perfil">Nombre perfil</label>
+                        <input type="text" class="form-control" id="perfil" placeholder="Ingrese perfil"
+                          formControlName="perfil" autocomplete="off">
+                      </div>
+
+                      <!-- checkbox -->
+                      <div class="form-group">
+                        <p>
+                          <label for="perfil">Permisos de usuario</label>
+                        </p>
+                        <!-- 
+                        <p for="" *ngFor="let  data of this.permiso; let i=index">
+                          <label class="checkbox">
+                            <input type="checkbox" class="iradio_flat-green" [value]="data.value"
+                              (change)="this.onCheckboxChange($event)" #checkboxes>
+                            {{data.name}}
+                            <span class="check"></span>
+                          </label>
+                        </p>
+                        <p class="error" *ngIf="this.formPerfil.controls['checkArray'].errors?.required">
+                          Seleccione al menos un permiso.
+                        </p> -->
+
+                        <!-- Ejemplo -->
+                        <div *ngFor="let hobby of formData.controls; let i=index;">
+                          <label class="checkbox">
+                            <input type="checkbox" [formControl]="hobby" [value]="this.permiso[i].value"
+                              (change)="this.getSelectedHobbies()" #checkboxes>
+                            {{this.permiso[i].name}}
+                            <span class="check"></span>
+                          </label>
+                        </div>
+                        <!-- <p class="error" *ngIf="this.formPerfil.controls['hobbies'].errors?.required">
+                          Seleccione al menos un permiso.
+                        </p>
+                        Fin ejemplo -->
+
+                      </div>
+                    </div>
+                    <!-- /.box-body -->
+
+                    <div class=" box-footer animated fadeIn fast">
+                      <button *ngIf="this.stadoEdit" type="submit"
+                        class="btn btn-success btn-group-lg btn-flat sombra ">AÑADIR</button>
+                      <button *ngIf="!this.stadoEdit" type="submit"
+                        class="btn btn-danger btn-group-lg btn-flat sombra ">EDITAR</button>
+                      <button *ngIf="!this.stadoEdit" type="submit"
+                        class="btn btn-secondary btn-group-lg btn-flat sombra marginIsquierda "
+                        (click)="this.cancelEdit()">CANCELAR</button>
+                    </div>
+                  </form>
+                </div>
+                <!-- /.box -->
+              </div>
+              <!--/.col (left) -->
+              <!-- right column -->
+              <div class="col-lg-8">
+                <!-- TABLA DE DATOS DEL PERFIL -->
+                <div class="box box-success sombra">
+                  <div class="box-header with-border">
+                    <h3 class="box-title color-titulo text-color-succes">Tabla de datos</h3>
+                  </div>
+                  <!-- /.box-header -->
+                  <div class="box-body">
+                    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"
+                      class="table table-bordered table-striped animated fadeIn fast" id="tabla-perfil">
+                      <thead>
+                        <tr>
+                          <th>Codigo perfil</th>
+                          <th>Perfil usuario</th>
+                          <th>Permisos usuario</th>
+                          <th>Acciones</th>
+
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let item of this.listaPerfil; let i=index" class="animated fadeIn fast">
+                          <td>{{ item.id }}</td>
+                          <td>{{ item.nombre }}</td>
+                          <td>
+                            <ul *ngFor="let item of item.permisos">
+                              <li>{{ item }}</li>
+                            </ul>
+                          </td>
+                          <td class="d-flexbox">
+
+                            <a class=" marginIsquierda" title="Editar Perfil Usuario" data-id=""
+                              (click)="this.editarPerfil(item.id)" style="cursor:pointer"><i
+                                class="fa fa-pencil text-green editarEliminar"></i></a>
+                            <a class=" marginIsquierda" title="Eliminar Perfil" data-id=""><i
+                                class="fa fa-trash text-red editarEliminar"></i></a>
+
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+              </div>
+              <!--/.col (right) -->
+            </div>
+            <!-- /.row -->
+          </section>
+          <!-- /.content -->
+
+          <!-- FIN start creating your amazing application! -->
+
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer">
+
+        </div>
+        <!-- /.box-footer-->
+      </div>
+      <!-- /.box -->
+
+    </section>
+    <!-- /.content -->
+  </div>

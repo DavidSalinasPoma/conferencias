@@ -1,0 +1,61 @@
+/* Formulario */
+.form-invitado {
+  width: 100%;
+}
+
+.imagen-invitado {
+  width: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+  .form-invitado {
+    width: 40%;
+  }
+
+  .imagen-invitado {
+    width: 60%;
+  }
+}
+
+.d-flexboxImg {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  /* justify-content: center; */
+
+}
+
+@media only screen and (min-width: 768px) {
+  .d-flexboxImg {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+
+  }
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto
+}
+
+.img-fluid:hover {
+  -webkit-box-shadow: 2px 4px 10px -6px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 2px 4px 10px -6px rgba(0, 0, 0, 0.75);
+  box-shadow: 2px 4px 10px -6px rgba(0, 0, 0, 0.75) !important;
+  cursor: pointer;
+}
+
+.caja-imagen {
+  width: 300px;
+}
+
+.img-thum {
+  padding: .25rem;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: .25rem;
+  max-width: 100%;
+  height: auto
+}

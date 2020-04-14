@@ -1,0 +1,259 @@
+<div class="animated fadeIn fast" id="">
+  <section class="content-header">
+    <h1>
+      Listado de administradores
+      <small>Administradores CBBAWebCamp-Tecnologico del Sur</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+      <li><a href="#">Administradores</a></li>
+      <li class="active">Agregar usuario</li>
+    </ol>
+  </section>
+
+  <section class="content">
+
+
+
+    <div class="box-body pding">
+
+      <div class="row">
+        <div class="col">
+          <div class="box box-primary sombra">
+            <div class="box-header with-border">
+              <h3 class="box-title color-titulo text-color-succes">Configuración de administradores.</h3>
+            </div>
+            <!-- Aplicación Principal -->
+            <div class="box-body">
+
+              <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"
+                class="table table-bordered table-striped animated fadeIn fast" id="tabla-perfil">
+                <thead>
+                  <tr>
+                    <th>Codigo usuario</th>
+                    <th>Carnet</th>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Email</th>
+                    <th>Perfil</th>
+                    <th>Estado</th>
+                    <th>Imagen</th>
+                    <th>Acciones</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of this.listaUsuarios; let i=index" class="animated fadeIn fast">
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.carnet }}</td>
+                    <td>{{ item.nombres }}</td>
+                    <td>{{ item.apellidos }}</td>
+                    <td>{{ item.email }}</td>
+                    <td>{{ item.perfil.nombre }}</td>
+
+                    <td *ngIf="item.estado" class="btn btn-success btn-xs">
+                      {{ item.estado ? "Habilitado" : "Deshabilitado" }}
+                    </td>
+                    <td *ngIf="!item.estado" class="btn btn-danger btn-xs">
+                      {{ item.stado != 0  ? "Deshabilitado" : "Habilitado" }}
+                    </td>
+
+                    <td class="">
+                      <img [src]="this.url+'user/avatar/'+item.imagen" alt="" class="imagen img-fluid img-thum">
+                    </td>
+
+                    <td class="d-flexbox">
+
+                      <a class=" marginIsquierda" title="Editar Perfil Usuario" data-id="" style="cursor:pointer"
+                        (click)="this.getEditUsuario(item.id,'myModal')"><i
+                          class="fa fa-pencil text-green editarEliminar"></i></a>
+
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+  </section>
+
+  <!-- Modal para editar -->
+  <ngx-smart-modal #myModal identifier="myModal" class="modales">
+    <!-- Modales -->
+
+    <div class="modal-header bg-color-danger">
+      <h4 class="modal-title">Default Modal</h4>
+    </div>
+    <div class="modal-body">
+      <!-- Formulario -->
+
+      <form [formGroup]="this.formulario" (submit)="this.onSubmitEditar()" novalidate>
+
+        <div class="d-flexbox-padre" id="">
+
+          <!-- Formulario input -->
+          <div class="campos" id="">
+
+            <!-- Campo carnet -->
+            <div class="form-group">
+
+              <label for="carnet">Carnet</label>
+              <input type="text" class="form-control" id="carnet" placeholder="Carnet" formControlName="carnet">
+              <!-- Validacion -->
+              <!-- Preguntamos si es invalido y si esta sucio o a sido tocado -->
+              <div *ngIf="this.carnet.invalid && (this.carnet.dirty || this.carnet.touched)" class="" id="">
+                <!-- Aqui el error q dijimos en la clase -->
+                <div *ngIf="this.carnet.errors.required" class="animated fadeIn fast text-color-danger" id="">
+                  El carnet es requerido.
+                </div>
+                <div *ngIf="this.carnet.errors.maxlength" class="animated fadeIn fast text-color-danger" id="">
+                  El carnet debe tener maximo 12 caracteres.
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Campo nombres -->
+            <div class="form-group">
+              <label for="nombres">Nombres</label>
+              <input type="text" class="form-control" id="nombres" placeholder="Nombres" formControlName="nombres"
+                name="nombres">
+              <!-- Validacion -->
+              <!-- Preguntamos si es invalido y si esta sucio o a sido tocado -->
+              <div *ngIf="this.nombres.invalid && (this.nombres.dirty || this.nombres.touched)">
+
+                <!-- Errores con expresiones regulares -->
+                <div *ngIf="this.nombres.hasError('pattern')" class="animated fadeIn fast text-color-danger" id="">
+                  El campo debe contener solo letras.
+                </div>
+                <!-- Errores con expresiones regulares -->
+                <div *ngIf="this.nombres.hasError('maxlength')" class="animated fadeIn fast text-color-danger" id="">
+                  El nombre debe contener maximo 50 caracteres.
+                </div>
+                <!-- Errores con expresiones regulares -->
+                <div *ngIf="this.nombres.hasError('required')" class="animated fadeIn fast text-color-danger" id="">
+                  El nombre es requerido.
+                </div>
+
+              </div>
+
+            </div>
+
+            <!-- Campo carnet -->
+            <div class="form-group">
+              <label for="apellidos">Apellidos</label>
+              <input type="text" class="form-control" id="apellidos" placeholder="Apellidos"
+                formControlName="apellidos">
+              <!-- Validacion -->
+              <!-- Preguntamos si es invalido y si esta sucio o a sido tocado -->
+              <div *ngIf="this.apellidos.invalid && (this.apellidos.dirty || this.apellidos.touched)">
+
+                <!-- Errores con expresiones regulares -->
+                <div *ngIf="this.apellidos.hasError('pattern')" class="animated fadeIn fast text-color-danger" id="">
+                  El campo debe contener solo letras.
+                </div>
+                <!-- Errores con expresiones regulares -->
+                <div *ngIf="this.apellidos.hasError('maxlength')" class="animated fadeIn fast text-color-danger" id="">
+                  El apellido debe contener maximo 50 caracteres.
+                </div>
+                <!-- Errores con expresiones regulares -->
+                <div *ngIf="this.apellidos.hasError('required')" class="animated fadeIn fast text-color-danger" id="">
+                  El apellido es requerido.
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Campo para perfil -->
+            <div class="form-group">
+              <label for="perfil">Perfil</label>
+              <ng-select [items]="this.perfiles" [selectOnTab]="true" bindValue="value" labelForId="perfil"
+                placeholder="Seleccione un perfil" formControlName="perfil">
+              </ng-select>
+
+              <div *ngIf="this.perfil.invalid && (this.perfil.dirty || this.perfil.touched)">
+                <!-- Errores con expresiones regulares -->
+                <div *ngIf="this.perfil.hasError('required')" class="animated fadeIn fast text-color-danger" id="">
+                  El apellido es requerido.
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Campo Email -->
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" id="email" placeholder="Email" formControlName="email">
+              <!-- Validacion -->
+              <!-- Preguntamos si es invalido y si esta sucio o a sido tocado -->
+              <div *ngIf="this.email.invalid && (this.email.dirty || this.email.touched)">
+
+                <!-- Errores con expresiones regulares -->
+                <div *ngIf="this.email.hasError('pattern')" class="animated fadeIn fast text-color-danger" id="">
+                  Email incorrecto.
+                </div>
+
+                <!-- Mostra errores personalizados -->
+                <div *ngIf="this.email.errors.required" class="animated fadeIn fast text-color-danger" id="">
+                  El email es requerido.
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+          <!-- Formulario imagenes -->
+          <div class="campo-imagen d-flexbox-padre2" id="">
+            <!-- Campo imagen-->
+            <div class="form-group  caja-imagen">
+
+              <label for="imagen">Ingrese un avatar para el usuario</label>
+
+              <!-- Mensaje para fotos pesadas -->
+              <div *ngIf="!this.editImagen; else mainContent" class="" id="">
+                <h1>Cargando foto...</h1>
+              </div>
+
+              <ng-template #mainContent class="animated fadeIn fast">
+                <!-- Enlace de una imagen con un imput -->
+                <input type="file" class="hidden" (change)="this.onPhotoSelected($event)" #photoInput
+                  formControlName="imagen" accept=".png,.jpg,.jpeg,.gif">
+                <!-- Cuando se haga un click en la imagen se va a ejecutar -->
+                <img [src]="this.photoSelected || this.url+'user/avatar/'+this.editImagen" class="img-fluid img-thum"
+                  alt="No hay imagen" (click)="photoInput.click()" id="imagen">
+                <div *ngIf="this.tamImage" class="animated fadeIn fast text-color-danger" id="">
+                  La imagen no debe ser mayor a 3Mb.
+                </div>
+                <!-- <angular-file-uploader [config]="this.afuConfig" (ApiResponse)="this.avatarUpload($event)">
+                          </angular-file-uploader> -->
+              </ng-template>
+            </div>
+          </div>
+          <!-- Boton de enviar -->
+          <div class="modal-footer boton-editar" id="">
+            <button type="submit" class="btn btn-success sombra" [disabled]="this.formulario.invalid">AGREGAR</button>
+            <button type="button" class="btn btn-secondary btn-flat sombra" (click)="myModal.close()">CANCELAR</button>
+          </div>
+        </div>
+
+      </form>
+
+      <!-- Fin formulario -->
+    </div>
+    <!-- <div class="modal-footer">
+      <button type="button" class="btn btn-secondary btn-flat sombra" (click)="myModal.close()">CANCELAR</button>
+      <button type="button" class="btn btn-success btn-flat sombra">GUARDAR</button>
+    </div> -->
+  </ngx-smart-modal>
+  <!-- /.modal -->
+
+
+</div>

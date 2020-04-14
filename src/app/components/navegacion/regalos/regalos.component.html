@@ -1,0 +1,149 @@
+  <!-- Content Regalos (Page Regalos) -->
+  <div class="animated fadeIn fast" id="">
+    <section class="content-header">
+      <h1>
+        Gestion de regalos del evento
+        <small>Administra regalos para el evento.</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+        <li><a href="#">Regalos</a></li>
+        <li class="active">Administrar Regalos</li>
+      </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+      <!-- Default box -->
+      <div class="box">
+        <div class="box-header with-border">
+          <h3 class="box-title color-titulo">Formulario de registro y tabla de datos</h3>
+        </div>
+
+        <div class="box-body">
+          <div class="row">
+            <!-- left column -->
+            <div class="col-lg-4">
+              <!-- general form elements -->
+              <div class="box box-primary sombra">
+                <div *ngIf="this.btnEdit else tituloRegalo" class="" id="">
+                  <div class="box-header with-border">
+                    <h3 class="box-title color-titulo text-color-primary">Crear un regalo para el evento</h3>
+                  </div>
+                </div>
+
+                <ng-template #tituloRegalo>
+                  <div class="box-header with-border">
+                    <h3 class="box-title color-titulo text-color-danger">Modifica el regalo</h3>
+                  </div>
+                </ng-template>
+
+                <!-- form start -->
+                <form [formGroup]='this.formulario' (ngSubmit)="this.onSubmit()" #loginForm="ngForm" id="formPerfil"
+                  novalidate>
+                  <div class="box-body">
+                    <div class="form-group">
+                      <label for="regalos">Regalo</label>
+                      <input type="text" class="form-control" id="regalos" placeholder="Regalos"
+                        formControlName="regalos" autocomplete="off">
+                      <!-- Validar entrada de usuario    -->
+                      <div *ngIf="this.regalos.invalid && (this.regalos.dirty || this.regalos.touched)">
+                        <!-- Errores con expresiones regulares -->
+                        <div *ngIf="this.regalos.hasError('maxlength')" class="animated fadeIn fast text-color-danger"
+                          id="">
+                          El nombre de regalo debe contener maximo 50 caracteres.
+                        </div>
+                        <!-- Errores con expresiones regulares -->
+                        <div *ngIf="this.regalos.hasError('required')" class="animated fadeIn fast text-color-danger"
+                          id="">
+                          El regalos es requerido.
+                        </div>
+                        <!-- Errores con expresiones regulares -->
+                        <div *ngIf="this.regalos.hasError('pattern')" class="animated fadeIn fast text-color-danger"
+                          id="">
+                          El campo permite solo letras y espacios.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- iNTERCALA BOTONES PARA EDITAR Y AGREGAR -->
+                  <div *ngIf="this.btnEdit else editar" class="" id="">
+                    <div class=" box-footer animated fadeIn fast">
+                      <button [disabled]="this.formulario.invalid" type="submit"
+                        class="btn btn-success btn-group-lg btn-flat sombra ">AÑADIR</button>
+
+                      <button type="button" class="btn btn-secondary btn-group-lg btn-flat sombra marginIsquierda "
+                        (click)="this.cancelGuardar()">CANCELAR</button>
+                    </div>
+                  </div>
+                  <ng-template #editar>
+                    <div class=" box-footer animated fadeIn fast">
+                      <button [disabled]="this.formulario.invalid" type="submit"
+                        class="btn btn-danger btn-group-lg btn-flat sombra ">EDITAR</button>
+                      <button type="button" class="btn btn-secondary btn-group-lg btn-flat sombra marginIsquierda"
+                        (click)="this.cancelEdit()">CANCELAR</button>
+                    </div>
+                  </ng-template>
+                </form>
+
+
+              </div>
+            </div>
+
+            <!-- Tabla de datos -->
+            <div class="col-lg-8">
+              <!-- TABLA DE DATOS DEL PERFIL -->
+              <div class="box box-success sombra">
+                <div class="box-header with-border">
+                  <h3 class="box-title color-titulo text-color-succes">Tabla de datos</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                  <!-- Para manejar el elemento table #dataTable -->
+                  <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="display" style="width:100%"
+                    class="table table-bordered table-striped animated fadeIn fast" id="tabla-perfil">
+                    <thead>
+                      <tr>
+                        <th>Codigo regalo</th>
+                        <th>Regalo</th>
+                        <th>Administrador</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let item of this.indexDatosRegalos">
+                        <td>{{ item.id }}</td>
+                        <td>{{ item.nombre }}</td>
+                        <td>{{ item.usuarios.nombres+ ' ' + item.usuarios.apellidos }}</td>
+                        <!-- <td>{{ item.estado }} -->
+                        <td *ngIf="item.estado else deshabilitado">
+                          <button class="btn btn-success btn-xs">Habilitado</button>
+                        </td>
+                        <ng-template #deshabilitado>
+                          <td>
+                            <button class="btn btn-danger btn-xs">Deshabilitado</button>
+                          </td>
+                        </ng-template>
+
+
+                        <td class="d-flexbox" (click)="this.editarRegalos(item.id)" style="cursor:pointer">
+
+                          <a class=" marginIsquierda" title="Editar Perfil Usuario" data-id=""><i
+                              class="fa fa-pencil text-green editarEliminar"></i></a>
+
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>

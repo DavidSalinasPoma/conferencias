@@ -1,0 +1,66 @@
+<div class="login-box">
+  <div class="login-logo">
+    <a href="../../index2.html"><b>Tecnologico</b> del Sur</a>
+  </div>
+
+  <!-- /.login-logo -->
+  <div class="login-box-body sombra animated fadeIn fast">
+
+    <p class="login-box-msg">INICIA SESIÓN AQUI</p>
+
+    <form [formGroup]='this.formulario' (ngSubmit)="this.onSubmit()" #loginForm="ngForm" id="formLogin" novalidate>
+      <div class="form-group has-feedback">
+        <input type="email" name="email" class="form-control" placeholder="Email" formControlName="email">
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        <!-- Validaciones -->
+        <div class="" id="" *ngIf="!this.formulario.get('email').valid && this.formulario.get('email').touched ">
+          <p class="text-red animated fadeIn fast" *ngIf="this.formulario.get('email').hasError('required')">El
+            campo
+            no
+            puede estar vacio
+          </p>
+          <p class="text-yellow animated fadeIn fast" *ngIf="this.formulario.get('email').hasError('pattern')">El
+            campo
+            debe contener un email</p>
+        </div>
+      </div>
+      <div class="form-group has-feedback">
+        <input type="password" name="password" class="form-control" placeholder="Contraseña" formControlName="password">
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        <!-- Validaciones -->
+        <div class="" id="" *ngIf="!this.formulario.get('password').valid && this.formulario.get('password').touched ">
+          <p class="text-red animated fadeIn fast" *ngIf="this.formulario.get('password').hasError('required')">El
+            campo
+            no puede estar vacio
+          </p>
+        </div>
+      </div>
+
+      <div class="row margeTop">
+        <div class="col-xs-6">
+          <div class="checkbox icheck">
+            <label>
+              <input type="checkbox"> Recuerdame
+            </label>
+          </div>
+        </div>
+        <!-- /.col -->
+        <div class="col-xs-6">
+          <button type="submit" value="Identificarse" class="btn btn-success btn-block btn-flat sombra"
+            [disabled]="this.formulario.invalid">Iniciar
+            sesión</button>
+          <button class="btn" [routerLink]="[ '/navegacion/dashboard']">hola</button>
+        </div>
+        <!-- /.col -->
+      </div>
+    </form>
+
+    <!-- /.social-auth-links -->
+
+    <a href="#" class="text-center">www.pasesConferencias.com.bo</a>
+
+  </div>
+  <!-- /.login-box-body -->
+
+</div>
+<!-- /.login-box -->

@@ -1,0 +1,54 @@
+.campos {
+  width: 100%;
+}
+
+.borderr {
+  border: 1px solid black;
+}
+
+.campo-imagen {
+  width: 100%;
+}
+
+/* On screens that are 992px or less, set the background color to blue */
+@media screen and (min-width: 992px) {
+  .campo-imagen {
+    width: 60%;
+    justify-content: center;
+  }
+
+  .campos {
+    width: 40%;
+  }
+
+}
+
+.hidden {
+  display: none;
+}
+
+
+.img-fluid {
+  max-width: 100%;
+  height: auto
+}
+
+.img-fluid:hover {
+  -webkit-box-shadow: 2px 4px 10px -6px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 2px 4px 10px -6px rgba(0, 0, 0, 0.75);
+  box-shadow: 2px 4px 10px -6px rgba(0, 0, 0, 0.75) !important;
+  cursor: pointer;
+}
+
+.caja-imagen {
+  width: 300px;
+}
+
+.img-thum {
+  padding: .25rem;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: .25rem;
+  max-width: 100%;
+  height: auto
+}

@@ -1,0 +1,71 @@
+<div class="animated fadeIn fast" id="">
+  <section class="content-header">
+    <h1>
+      Lista de invitados
+      <small>Administradores CBBAWebCamp-Tecnologico del Sur</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+      <li><a href="#">Invitados</a></li>
+      <li class="active">Ver todos</li>
+    </ol>
+  </section>
+
+  <!-- Seccion tabla de ddatos -->
+  <section class="content">
+    <div class="box-body pding">
+
+      <div class="row">
+        <div class="col">
+          <div class="box box-primary sombra">
+            <div class="box-header with-border">
+              <h3 class="box-title color-titulo text-color-succes">Configuración de administradores.</h3>
+            </div>
+            <!-- Aplicación Principal -->
+            <div class="box-body">
+
+              <!-- <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"></table> -->
+              <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"
+                class="table table-bordered table-striped animated fadeIn fast" id="tabla-perfil">
+                <thead>
+                  <tr>
+                    <th>Codigo invitado</th>
+                    <th>Carnet</th>
+                    <th>Invitado</th>
+                    <th>Descripción</th>
+                    <th>administrador</th>
+                    <th>Imagen</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of this.listaInvitados">
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.carnet }}</td>
+                    <td>{{item.nombres+' '+item.apellidos}}</td>
+                    <td>{{item.descripcion}}</td>
+                    <td>{{item.usuarios.nombres+' '+ item.usuarios.apellidos}}</td>
+                    <td>{{ item.url_imagen }}</td>
+                    <td class="d-flexbox">
+
+                      <a class=" marginIsquierda" title="Editar Perfil Usuario" data-id="" style="cursor:pointer"><i
+                          class="fa fa-pencil text-green editarEliminar"></i></a>
+                      <a class=" marginIsquierda" title="Eliminar Perfil" data-id="" style="cursor:pointer"><i
+                          class="fa fa-trash text-red editarEliminar"></i></a>
+
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+  </section>
