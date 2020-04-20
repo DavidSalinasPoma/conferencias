@@ -165,7 +165,7 @@ export class AgregarUsuarioComponent implements OnInit {
   public onSubmit() {
 
 
-    console.log(this.formulario.value);
+    // console.log(this.formulario.value);
 
     this.user.carnet = this.formulario.value.carnet;
     this.user.nombres = this.formulario.value.nombres;
@@ -195,7 +195,7 @@ export class AgregarUsuarioComponent implements OnInit {
       );
 
     } else { // en caso de que no se haya selecionado ninguna imagen.
-      this.user.imagen = '1586142408no-image.png';
+      this.user.imagen = 'no-image.png';
       // Para guardar el usuario en la base de datos
       this.añadirUsuario(this.user);
     }
@@ -213,7 +213,7 @@ export class AgregarUsuarioComponent implements OnInit {
         if (response.status === "success") {
           // El usuario se ha creado correctamente
           this.toaster.success(response.message);
-          console.log(response);
+          // console.log(response);
         } else {
           this.toaster.error(response.message);
         }

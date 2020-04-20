@@ -53,8 +53,8 @@ export class InvitadosService {
    * storeInvitados Guarda datos en la base de datos
    */
   public storeInvitados(invitados: Invitados, token: any): Observable<any> {
-    console.log(invitados);
-    const json = JSON.stringify(Invitados); // convertimos el objeto a json.
+    // console.log(invitados);
+    const json = JSON.stringify(invitados); // convertimos el objeto a json.
     const params = 'json=' + json; // La varible con la que recibe el parametro. en el API.
     // console.log(params);
 
@@ -70,15 +70,14 @@ export class InvitadosService {
    * updateInvitados modifica datos la tabla regalos.
    */
   public updateInvitados(invitados: Invitados, token: any, idInvitados: number): Observable<any> {
+    console.log(invitados);
 
-
-    const json = JSON.stringify(Invitados); // convertimos el objeto a json.
+    const json = JSON.stringify(invitados); // convertimos el objeto a json.
     const params = 'json=' + json; // La varible con la que recibe el parametro. en el API.
 
 
     const headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
       .set('Authorization', token); // la cabecera de conexion
-    // console.log(params);
 
     // retornamos respuestas de El APIRESTFUL
     return this.http.put(this.url + 'invitados/' + idInvitados, params, { headers: headers });
@@ -88,9 +87,10 @@ export class InvitadosService {
   /**
    *  // Destroy elimina un registro de la tabla de datos.
    */
-  public destroyInvitados(idInvitados: number): Observable<any> {
+  public destroyInvitados(idInvitados: number, token: any): Observable<any> {
 
-    const headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded'); // la cabecera de conexion
+    const headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+      .set('Authorization', token); // la cabecera de conexion
     // retornamos respuestas de El APIRESTFUL
     return this.http.delete(this.url + 'invitados/' + idInvitados, { headers: headers });
 
@@ -110,5 +110,16 @@ export class InvitadosService {
 
     // retornamos respuestas de El APIRESTFUL
     return this.http.post(this.url + 'invitados/upload', fd, { headers: headers });
+  }
+
+  /**
+   * destroyImagen elimina imagen de la base de datos
+   */
+  public destroyImagen(nameImag) {
+
+    const headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded'); // la cabecera de conexion
+    // retornamos respuestas de El APIRESTFUL
+    return this.http.get(this.url + 'invitados/imagen/' + nameImag, { headers: headers });
+
   }
 }

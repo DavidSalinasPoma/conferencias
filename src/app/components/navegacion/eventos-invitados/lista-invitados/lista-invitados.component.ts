@@ -3,6 +3,8 @@ import { Component, OnInit, ViewChild, ChangeDetectorRef, OnDestroy } from '@ang
 // Servicios
 import { InvitadosService } from 'src/app/services/invitados.service';
 import { global } from '../../../../services/global';
+import { UserService } from '../../../../services/user.service';
+
 
 
 // Modelos
@@ -11,6 +13,13 @@ import { Invitados } from 'src/app/models/invitados';
 // Para las tablas de datos
 import { DataTableDirective } from 'angular-datatables';
 import { Subject, Observable } from 'rxjs';
+
+// Para direccionar rutas con un boton
+import { Router } from '@angular/router';
+
+// Notificaciones
+import Swal from 'sweetalert2';
+import { ToastrService } from 'ngx-toastr';
 
 // Para autocompletado de los eventos
 interface HtmlInputEvent extends Event {
@@ -45,10 +54,21 @@ export class ListaInvitadosComponent implements OnInit, OnDestroy {
   // Recive la url Global
   public url: string;
 
-  constructor(private invitadosServices: InvitadosService, private chRef: ChangeDetectorRef) {
+  // Token
+  public token: object;
+
+  // Ricibe la photo antes de ser eliminado
+  public namePhoto: string;
+
+  constructor(
+    private invitadosServices: InvitadosService,
+    private chRef: ChangeDetectorRef,
+    private router: Router, private toaster: ToastrService, private userService: UserService) {
 
     // Asigna la url del servicio y lo almacena en una varible global
     this.url = global.url;
+
+    this.token = this.userService.getToken();
   }
 
 
@@ -82,6 +102,36 @@ export class ListaInvitadosComponent implements OnInit, OnDestroy {
     );
 
   }
+
+  /**
+   * indexInvitados Lista todos los registros de invitados
+   */
+  public indexInvitados2() {
+
+    this.invitadosServices.indexInvitados().subscribe(
+      response => {
+        // console.log(response);
+        if (response.status === 'success') {
+
+          this.listaInvitados = response.invitados;
+          this.rerender();
+        }
+      },
+      errors => {
+        console.log(errors);
+      }
+    );
+
+  }
+
+  /**
+   * editInvitados
+   */
+  public editInvitados(idInvitados: number) {
+    // Redireccionamos al componente editarInvitados
+    this.router.navigate(['/navegacion/invitados/editar', idInvitados]);
+  }
+
 
   // **** Metodos de la tabla de datos */
 
@@ -134,5 +184,64 @@ export class ListaInvitadosComponent implements OnInit, OnDestroy {
 
   // **** Fin metodos de la tabla de datos */
 
+
+  // *Metodos del sistema**/
+
+  /**
+   * eliminarInvitado Elimina si no esta registrado en ningun evento
+   */
+  public eliminarInvitado(idInvitados: number) {
+
+    Swal.fire({
+      title: 'Estas seguro?',
+      text: "No podras revertir esto!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#dc3545',
+      cancelButtonColor: 'rgb(224, 224, 224)',
+      // cancelButtonColor: '#6c757d',
+      confirmButtonText: 'Si, Eliminar!',
+      cancelButtonText: 'Cancelar',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.value) {
+
+        // Recogiendo el nombre de la photo
+        this.invitadosServices.showInvitados(idInvitados).subscribe(
+          respuesta => {
+            if (respuesta.status === 'success') {
+
+              this.namePhoto = respuesta.invitados.url_imagen;
+
+              // Elimninado el registro
+              this.invitadosServices.destroyInvitados(idInvitados, this.token).subscribe(
+                response => {
+                  // console.log(response);
+
+                  if (response.status === 'success') {
+
+                    this.toaster.success(response.message);
+                    this.indexInvitados2();
+
+                    // Eliminando la imagen
+                    this.invitadosServices.destroyImagen(this.namePhoto).subscribe();
+                  }
+                },
+                error => {
+                  this.toaster.error(error.error.message2, error.error.message);
+                }
+              );
+
+            }
+          }
+        );
+
+
+      }
+    });
+
+  }
+
+  // *Fin metodos del sistema**/
 
 }

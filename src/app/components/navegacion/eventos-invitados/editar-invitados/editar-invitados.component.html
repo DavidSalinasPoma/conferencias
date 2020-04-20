@@ -1,0 +1,191 @@
+<div class="animated fadeIn fast" id="">
+
+  <section class="content-header">
+    <h1>
+      Gestion invitados
+      <small>Llena el formulario para registrar un invitado</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+      <li><a href="#">Administradores</a></li>
+      <li class="active">Ver todos</li>
+    </ol>
+  </section>
+
+  <!-- Formulario -->
+  <!-- Main content -->
+  <section class="content">
+    <!-- Default box -->
+    <div class="box">
+      <div class="box-header with-border">
+        <h3 class="box-title color-titulo">Formulario de registro</h3>
+      </div>
+
+      <div class="box-body">
+        <section class="content">
+          <div class="row">
+            <!-- left column -->
+            <div class="col">
+              <!-- general form elements -->
+              <div class="box box-primary sombra">
+                <div class="box-header with-border">
+                  <h3 class="box-title color-titulo text-color-danger">Modificar datos del invitado</h3>
+                </div>
+                <!-- Formulario -->
+                <div class="box-body">
+
+                  <form [formGroup]="this.formulario" (submit)="this.onSubmitEdit()" novalidate>
+
+                    <div class="d-flexbox" id="">
+                      <!-- Campo carnet -->
+                      <div class="form-invitado" id="">
+
+                        <div class="form-group" id="">
+                          <label for="carnet">Carnet</label>
+                          <input type="text" class="form-control" formControlName="carnet">
+                          <!-- Validacion -->
+                          <!-- Preguntamos si es invalido y si esta sucio o a sido tocado -->
+                          <div *ngIf="this.carnet.invalid && (this.carnet.dirty || this.carnet.touched)" class="" id="">
+                            <!-- Aqui el error q dijimos en la clase -->
+                            <div *ngIf="this.carnet.hasError('required')" class="animated fadeIn fast text-color-danger"
+                              id="">
+                              El carnet es requerido.
+                            </div>
+                            <!-- Aqui el error q dijimos en la clase -->
+                            <div *ngIf="this.carnet.hasError('pattern')" class="animated fadeIn fast text-color-danger"
+                              id="">
+                              Numero de carnet invalido.
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Campo Nombres -->
+                        <div class="form-group" id="">
+                          <label for="nombres">Nombres</label>
+                          <input type="text" class="form-control" formControlName="nombres">
+                          <!-- Validacion -->
+                          <!-- Preguntamos si es invalido y si esta sucio o a sido tocado -->
+                          <div *ngIf="this.nombres.invalid && (this.nombres.dirty || this.nombres.touched)">
+
+                            <!-- Errores con expresiones regulares -->
+                            <div *ngIf="this.nombres.hasError('pattern')" class="animated fadeIn fast text-color-danger"
+                              id="">
+                              El campo debe contener solo letras.
+                            </div>
+                            <!-- Errores con expresiones regulares -->
+                            <div *ngIf="this.nombres.hasError('maxlength')"
+                              class="animated fadeIn fast text-color-danger" id="">
+                              El nombre debe contener maximo 50 caracteres.
+                            </div>
+                            <!-- Errores con expresiones regulares -->
+                            <div *ngIf="this.nombres.hasError('required')"
+                              class="animated fadeIn fast text-color-danger" id="">
+                              El nombre es requerido.
+                            </div>
+
+                          </div>
+                        </div>
+                        <!-- Campo Apellidos -->
+                        <div class="form-group" id="">
+                          <label for="apellidos">Apellidos</label>
+                          <input type="text" class="form-control" formControlName="apellidos">
+                          <!-- Validacion -->
+                          <!-- Preguntamos si es invalido y si esta sucio o a sido tocado -->
+                          <div *ngIf="this.apellidos.invalid && (this.apellidos.dirty || this.apellidos.touched)">
+
+                            <!-- Errores con expresiones regulares -->
+                            <div *ngIf="this.apellidos.hasError('pattern')"
+                              class="animated fadeIn fast text-color-danger" id="">
+                              El campo debe contener solo letras.
+                            </div>
+                            <!-- Errores con expresiones regulares -->
+                            <div *ngIf="this.apellidos.hasError('maxlength')"
+                              class="animated fadeIn fast text-color-danger" id="">
+                              El apellido debe contener maximo 50 caracteres.
+                            </div>
+                            <!-- Errores con expresiones regulares -->
+                            <div *ngIf="this.apellidos.hasError('required')"
+                              class="animated fadeIn fast text-color-danger" id="">
+                              El apellido es requerido.
+                            </div>
+
+                          </div>
+                        </div>
+                        <!-- Campo Descripción -->
+                        <div class="form-group" id="">
+                          <label for="descripcion">Descripción</label>
+                          <textarea name="" id="" cols="30" rows="5" class="form-control"
+                            formControlName="descripcion"></textarea>
+                          <!-- Validacion -->
+                          <!-- Preguntamos si es invalido y si esta sucio o a sido tocado -->
+                          <div *ngIf="this.descripcion.invalid && (this.descripcion.dirty || this.descripcion.touched)">
+
+                            <!-- Errores con expresiones regulares -->
+                            <div *ngIf="this.descripcion.hasError('pattern')"
+                              class="animated fadeIn fast text-color-danger" id="">
+                              El campo debe contener solo letras.
+                            </div>
+                            <!-- Errores con expresiones regulares -->
+                            <div *ngIf="this.descripcion.hasError('maxlength')"
+                              class="animated fadeIn fast text-color-danger" id="">
+                              La descripción debe contener maximo 50 caracteres.
+                            </div>
+                            <!-- Errores con expresiones regulares -->
+                            <div *ngIf="this.descripcion.hasError('required')"
+                              class="animated fadeIn fast text-color-danger" id="">
+                              La descripción es requerido.
+                            </div>
+
+                          </div>
+                        </div>
+                      </div><!-- fin campos -->
+
+                      <div class="imagen-invitado" id="">
+                        <div class="form-group d-flexboxImg" id="">
+                          <div class="caja-imagen" id="">
+                            <label for="imagen">Ingrese imagen para el invitado</label>
+
+                            <div *ngIf="this.editImagen else loadedImag" class="animated fadeIn fast text-color-danger"
+                              id="">
+
+                              <!-- Enlace de una imagen con un imput -->
+                              <input type="file" class="hidden" (change)="this.onPhotoSelected($event)" #photoInput
+                                formControlName="imagen" accept=".png,.jpg,.jpeg,.gif">
+                              <!-- Cuando se haga un click en la imagen se va a ejecutar -->
+                              <img [src]="this.photoSelected || this.url+'invitados/avatar/'+this.editImagen"
+                                class="img-fluid img-thum" alt="No hay imagen" (click)="photoInput.click()" id="imagen">
+                            </div>
+
+                            <ng-template #loadedImag class="animated fadeIn fast text-color-danger" id="">
+                              <div class="" id="">
+                                Cargando foto...
+                              </div>
+                            </ng-template>
+                            <!-- Validar imagen no mayor a 3 megas -->
+                            <div *ngIf="this.tamImage" class="animated fadeIn fast text-color-danger" id="">
+                              La imagen no debe ser mayor a 3Mb.
+                            </div>
+                          </div>
+                        </div>
+                      </div><!-- fin campo imagen -->
+                      <!-- Botones -->
+
+                    </div>
+
+                    <div class="uk-button-group" id="">
+                      <button type="button" class="btn btn-default sombra"
+                        (click)="this.cancelarEdicion()">CANCELAR</button>
+                      <button type="submit" class="btn btn-danger sombra  marginIsquierda"
+                        [disabled]="this.formulario.invalid">MODIFICAR</button>
+                    </div>
+
+                  </form>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+
+    </div>

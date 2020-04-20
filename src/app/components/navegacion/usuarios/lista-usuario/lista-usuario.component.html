@@ -67,6 +67,9 @@
                       <a class=" marginIsquierda" title="Editar Perfil Usuario" data-id="" style="cursor:pointer"
                         (click)="this.getEditUsuario(item.id,'myModal')"><i
                           class="fa fa-pencil text-green editarEliminar"></i></a>
+                      <a class=" marginIsquierda" title="Eliminar Perfil" data-id=""
+                        (click)="this.eliminarUsuario(item.id,item.imagen)"><i
+                          class="fa fa-trash text-red editarEliminar"></i></a>
 
                     </td>
                   </tr>

@@ -33,7 +33,8 @@
                     <th>Carnet</th>
                     <th>Invitado</th>
                     <th>Descripción</th>
-                    <th>administrador</th>
+                    <th>Administrador</th>
+                    <th>Estado</th>
                     <th>Imagen</th>
                     <th>Acciones</th>
                   </tr>
@@ -45,13 +46,26 @@
                     <td>{{item.nombres+' '+item.apellidos}}</td>
                     <td>{{item.descripcion}}</td>
                     <td>{{item.usuarios.nombres+' '+ item.usuarios.apellidos}}</td>
-                    <td>{{ item.url_imagen }}</td>
+                    <td *ngIf="item.estado else deshabilitado">
+                      <button class="btn btn-success btn-xs">Habilitado</button>
+                    </td>
+                    <ng-template #deshabilitado>
+                      <td>
+                        <button class="btn btn-danger btn-xs">Deshabilitado</button>
+                      </td>
+                    </ng-template>
+
+                    <td class="">
+                      <img [src]="this.url+'invitados/avatar/'+item.url_imagen" alt=""
+                        class="imagen img-fluid img-thum">
+                    </td>
+
                     <td class="d-flexbox">
 
-                      <a class=" marginIsquierda" title="Editar Perfil Usuario" data-id="" style="cursor:pointer"><i
-                          class="fa fa-pencil text-green editarEliminar"></i></a>
-                      <a class=" marginIsquierda" title="Eliminar Perfil" data-id="" style="cursor:pointer"><i
-                          class="fa fa-trash text-red editarEliminar"></i></a>
+                      <a class=" marginIsquierda" title="Editar Perfil Usuario" data-id="" style="cursor:pointer"
+                        (click)="this.editInvitados(item.id)"><i class="fa fa-pencil text-green editarEliminar"></i></a>
+                      <a class=" marginIsquierda" title="Eliminar Perfil" data-id="" style="cursor:pointer"
+                        (click)="this.eliminarInvitado(item.id)"><i class="fa fa-trash text-red editarEliminar"></i></a>
 
                     </td>
                   </tr>

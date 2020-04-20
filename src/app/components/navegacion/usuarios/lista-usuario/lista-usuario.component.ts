@@ -366,7 +366,7 @@ export class ListaUsuarioComponent implements OnInit, OnDestroy {
         this.userEditar = response;
         this.editImagen = 'Cargando foto...';
         this.editImagen = response.usuario.imagen;
-        console.log(this.editImagen);
+        // console.log(this.editImagen);
 
 
         this.formulario.reset({
@@ -422,7 +422,8 @@ export class ListaUsuarioComponent implements OnInit, OnDestroy {
               if (result.value) {
                 // Para guardar el usuario en la base de datos
                 this.editarUsuario(this.user);
-
+                // Eliminando la imagen anterior
+                this.userServices.destroyImagen(this.editImagen, this.token).subscribe();
               }
             });
 
@@ -482,6 +483,46 @@ export class ListaUsuarioComponent implements OnInit, OnDestroy {
 
   }
 
+  /**
+   * eliminarUsuario
+   */
+  public eliminarUsuario(idUser: number, imagen: string) {
+
+    Swal.fire({
+      title: 'Estas seguro de eliminar?',
+      text: "No podras revertir esto!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#dc3545',
+      cancelButtonColor: 'rgb(224, 224, 224)',
+      // cancelButtonColor: '#6c757d',
+      confirmButtonText: 'Si, Eliminar!',
+      cancelButtonText: 'Cancelar',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.value) {
+
+        // Eliminando un usuario
+        this.userServices.destroyUsuario(idUser, this.token).subscribe(
+          response => {
+            console.log(response);
+
+            // Eliminado la imagen del usuario
+            this.userServices.destroyImagen(imagen, this.token).subscribe();
+            this.toaster.success('Correctamente', response.message);
+
+          },
+          error => {
+            this.toaster.error('El usuario no puede ser eliminado.');
+
+          }
+
+        );
+      }
+    });
+
+
+  }
 
 
   /**

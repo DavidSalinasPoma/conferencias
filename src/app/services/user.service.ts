@@ -156,7 +156,7 @@ export class UserService {
    */
   public registerUsuario(user): Observable<any> {
 
-    console.log(user);
+    // console.log(user);
 
     const json = JSON.stringify(user); // convertimos el objeto a json.
     const params = 'json=' + json; // La varible con la que recibe el parametro. en el API.
@@ -201,4 +201,30 @@ export class UserService {
     // retornamos respuestas de El APIRESTFUL
     return this.http.put(this.url + 'user/update/' + usuario.id, params, { headers: headers });
   }
+
+  /**
+   * destroyUser
+   */
+  public destroyUsuario(idUser: number, token: any): Observable<any> {
+
+    const headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+      .set('Authorization', token); // la cabecera de conexion
+    // console.log(params);
+
+    // retornamos respuestas de El APIRESTFUL
+    return this.http.delete(this.url + 'user/destroyUsuario/' + idUser, { headers: headers });
+  }
+
+  /**
+   * destroyImagen elimina imagen de la base de datos
+   */
+  public destroyImagen(nameImag: any, token: any): Observable<any> {
+
+    const headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded') // la cabecera de conexion
+      .set('Authorization', token); // la cabecera de conexion
+    // retornamos respuestas de El APIRESTFUL
+    return this.http.get(this.url + 'user/imagen/' + nameImag, { headers: headers });
+
+  }
+
 }

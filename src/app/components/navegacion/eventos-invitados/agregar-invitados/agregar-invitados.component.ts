@@ -56,7 +56,7 @@ export class AgregarInvitadosComponent implements OnInit {
     private fb: FormBuilder, private toaster: ToastrService,
     private userServices: UserService, private invitadoServices: InvitadosService) {
     this.crearFormulario();
-    this.invitados = new Invitados(0, 0, '', '', '', 1, '', 0);
+    this.invitados = new Invitados(0, '', '', '', '', 1, '', 0);
     this.token = this.userServices.getToken();
   }
 
@@ -79,7 +79,8 @@ export class AgregarInvitadosComponent implements OnInit {
     this.invitados.descripcion = this.formulario.value.descripcion;
     this.invitados.url_imagen = '';
 
-    console.log(this.invitados);
+    // console.log(this.invitados);
+    // console.log(this.file);
 
     // Guarda en la base de datos la imagen
     // Luego recupera el nombre de la base de datos la imagen
@@ -92,6 +93,7 @@ export class AgregarInvitadosComponent implements OnInit {
             this.invitados.url_imagen = response.image;
             // Para guardar el usuario en la base de datos
             this.añadirInvitado(this.invitados);
+            this.refrescarFormulario();
           }
         },
         errors => {
@@ -104,6 +106,7 @@ export class AgregarInvitadosComponent implements OnInit {
       this.invitados.url_imagen = '1586142408no-image.png';
       // Para guardar el usuario en la base de datos
       this.añadirInvitado(this.invitados);
+      this.refrescarFormulario();
     }
 
     // console.log(this.user);
@@ -118,7 +121,7 @@ export class AgregarInvitadosComponent implements OnInit {
         if (response.status === "success") {
           // El usuario se ha creado correctamente
           this.toaster.success(response.message);
-          console.log(response);
+          // console.log(response);
         } else {
           this.toaster.error(response.message);
         }
@@ -190,8 +193,8 @@ export class AgregarInvitadosComponent implements OnInit {
       Validators.maxLength(50),
       Validators.required
       ])],
-      descripcion: ['', Validators.compose([Validators.pattern("^[A-Za-zÁÉÍÓÚáéíóúñÑ ]+$"),
-      Validators.maxLength(50),
+      descripcion: ['', Validators.compose([Validators.pattern("^[A-Za-zÁÉÍÓÚáéíóúñÑ.;, ]+$"),
+      Validators.maxLength(500),
       Validators.required
       ])],
       imagen: ['', Validators.compose([Validators.required])]
@@ -203,6 +206,10 @@ export class AgregarInvitadosComponent implements OnInit {
    */
   public refrescarFormulario() {
     this.formulario.reset();
+    // Limpia la imagen
+    this.photoSelected = null;
+    this.tamImage = false;
+    this.file = null;
   }
 
   get carnet() {

@@ -49,6 +49,7 @@ import { ApellidosValidationDirective } from './validations/apellidos-validation
 import { RegalosComponent } from './components/navegacion/regalos/regalos.component';
 import { ListaInvitadosComponent } from './components/navegacion/eventos-invitados/lista-invitados/lista-invitados.component';
 import { AgregarInvitadosComponent } from './components/navegacion/eventos-invitados/agregar-invitados/agregar-invitados.component';
+import { EditarInvitadosComponent } from './components/navegacion/eventos-invitados/editar-invitados/editar-invitados.component';
 
 
 
@@ -78,6 +79,7 @@ import { AgregarInvitadosComponent } from './components/navegacion/eventos-invit
     RegalosComponent,
     ListaInvitadosComponent,
     AgregarInvitadosComponent,
+    EditarInvitadosComponent,
 
   ],
   imports: [
