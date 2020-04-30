@@ -1,0 +1,105 @@
+<div class="animated fadeIn fast" id="">
+
+  <section class="content-header">
+    <h1>
+      Gestion categoria eventos
+      <small>Llena el formulario</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+      <li><a href="#">Categoria eventos</a></li>
+      <li class="active">Agregar</li>
+    </ol>
+  </section>
+
+  <!-- Formulario -->
+  <!-- Main content -->
+  <section class="content ">
+    <!-- Default box -->
+    <div class="box">
+      <div class="box-header with-border">
+        <h3 class="box-title color-titulo">Formulario de registro</h3>
+      </div>
+
+      <div class="box-body">
+        <section class="content">
+          <div class="row">
+            <!-- left column -->
+            <div class="col-md-6">
+              <!-- general form elements -->
+              <div class="box box-primary sombra">
+                <div class="box-header with-border">
+                  <h3 class="box-title color-titulo text-color-primary">Crear categoria para eventos</h3>
+                </div>
+
+                <div class="box-body">
+
+                  <!-- Formulario -->
+                  <form [formGroup]="this.formulario" (submit)="this.onSubmit()" novalidate>
+
+                    <!-- Campo categoria -->
+                    <div class="form-group">
+
+                      <label for="categoria">Categoria</label>
+                      <input type="text" class="form-control" id="categoria" placeholder="Categoria"
+                        formControlName="categoria">
+                      <!-- Validacion -->
+                      <!-- Preguntamos si es invalido y si esta sucio o a sido tocado -->
+                      <div *ngIf="this.categoria.invalid && (this.categoria.dirty || this.categoria.touched)" class=""
+                        id="">
+                        <!-- Aqui el error q dijimos en la clase -->
+                        <div *ngIf="this.categoria.errors.required" class="animated fadeIn fast text-color-danger"
+                          id="">
+                          La categoria es requerida.
+                        </div>
+                        <div *ngIf="this.categoria.errors.maxlength" class="animated fadeIn fast text-color-danger"
+                          id="">
+                          El categoria debe tener maximo 30 caracteres.
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <!-- Campo icono -->
+                    <div class="form-group iconDelegation">
+                      <label for="icono">Icono</label>
+                      <div class="input-group" id="">
+                        <div class="input-group-addon iconosDavid" id="">
+                          <i class="fa fa-address-book"></i>
+                        </div>
+                        <input type="text" class="form-control pull-right" id="icono" placeholder="fa-icon"
+                          formControlName="icono" autocomplete="off">
+
+                      </div>
+                      <!-- Validacion -->
+                      <!-- Preguntamos si es invalido y si esta sucio o a sido tocado -->
+                      <div *ngIf="this.icono.invalid && (this.icono.dirty || this.icono.touched)" class="" id="">
+                        <!-- Aqui el error q dijimos en la clase -->
+                        <div *ngIf="this.icono.errors.required" class="animated fadeIn fast text-color-danger" id="">
+                          El icono es requerido.
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <!-- Boton de enviar -->
+                    <div class="btn-group" id="">
+                      <button type="button" class="btn btn-default sombra marginIsquierda"
+                        (click)="this.refrescar()">LIMPIAR</button>
+                      <button type="submit" class="btn btn-success sombra"
+                        [disabled]="this.formulario.invalid">AGREGAR</button>
+                    </div>
+
+                  </form>
+                  <!-- Fin formulario -->
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+
+</div>

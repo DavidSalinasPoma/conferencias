@@ -15,6 +15,8 @@ import { UsuariosComponent } from '../usuarios/usuarios.component';
 import { EventosComponent } from '../eventos/eventos.component';
 import { RegalosComponent } from '../regalos/regalos.component';
 import { EventosInvitadosComponent } from '../eventos-invitados/eventos-invitados.component';
+import { EventosCategoriaComponent } from '../eventos-categoria/eventos-categoria.component';
+import { categoriaRoutes } from '../eventos-categoria/router/route-routing.module';
 
 
 
@@ -24,4 +26,5 @@ export const navegacionRoutes: Routes = [
   { path: 'usuarios', component: UsuariosComponent, children: usuariosRoutes },
   { path: 'eventos', component: EventosComponent, children: eventosRoutes },
   { path: 'invitados', component: EventosInvitadosComponent, children: invitadosRoutes },
+  { path: 'categoria-eventos', component: EventosCategoriaComponent, children: categoriaRoutes },
 ];

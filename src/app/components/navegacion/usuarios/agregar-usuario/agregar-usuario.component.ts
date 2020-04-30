@@ -164,7 +164,6 @@ export class AgregarUsuarioComponent implements OnInit {
    */
   public onSubmit() {
 
-
     // console.log(this.formulario.value);
 
     this.user.carnet = this.formulario.value.carnet;
@@ -221,6 +220,8 @@ export class AgregarUsuarioComponent implements OnInit {
       errors => {
         // Ya existe un registro igual.
         this.toaster.error(errors.error.message);
+        // Destruye la imagen si a duplicidad de datos
+        this.userService.destroyImagen(user.imagen, this.token).subscribe();
       }
     );
   }

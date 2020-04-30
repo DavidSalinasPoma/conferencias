@@ -23,6 +23,8 @@ import { AngularFileUploaderModule } from "angular-file-uploader";
 // Modales
 import { NgxSmartModalModule } from 'ngx-smart-modal';
 
+// iconosPiker
+// import { IconPickerModule } from 'ngx-icon-picker';
 
 // Componentes de la aplicacion
 import { AppComponent } from './app.component';
@@ -50,6 +52,9 @@ import { RegalosComponent } from './components/navegacion/regalos/regalos.compon
 import { ListaInvitadosComponent } from './components/navegacion/eventos-invitados/lista-invitados/lista-invitados.component';
 import { AgregarInvitadosComponent } from './components/navegacion/eventos-invitados/agregar-invitados/agregar-invitados.component';
 import { EditarInvitadosComponent } from './components/navegacion/eventos-invitados/editar-invitados/editar-invitados.component';
+import { AgregarCategoriaComponent } from './components/navegacion/eventos-categoria/agregar-categoria/agregar-categoria.component';
+import { ListaCategoriaComponent } from './components/navegacion/eventos-categoria/lista-categoria/lista-categoria.component';
+import { EditarCategoriaComponent } from './components/navegacion/eventos-categoria/editar-categoria/editar-categoria.component';
 
 
 
@@ -80,6 +85,9 @@ import { EditarInvitadosComponent } from './components/navegacion/eventos-invita
     ListaInvitadosComponent,
     AgregarInvitadosComponent,
     EditarInvitadosComponent,
+    AgregarCategoriaComponent,
+    ListaCategoriaComponent,
+    EditarCategoriaComponent,
 
   ],
   imports: [
@@ -93,7 +101,8 @@ import { EditarInvitadosComponent } from './components/navegacion/eventos-invita
     ToastrModule.forRoot(), // ToastrModule added
     AngularFileUploaderModule,
     NgSelectModule,
-    NgxSmartModalModule.forRoot()
+    NgxSmartModalModule.forRoot(),
+    // IconPickerModule
 
   ],
   providers: [],

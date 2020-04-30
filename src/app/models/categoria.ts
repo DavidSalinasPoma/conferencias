@@ -3,7 +3,8 @@ export class Categoria {
         public id: number,
         public eventoCategoria: string,
         public icono: string,
-        public usuariosId: number
+        // tslint:disable-next-line: variable-name
+        public usuarios_id: number
     ) {
 
     }

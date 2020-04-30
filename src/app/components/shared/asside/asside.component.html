@@ -61,7 +61,7 @@
        <!-- Eventos -->
        <li class="treeview">
          <a href="#">
-           <i class="fa fa-calendar"></i>
+           <i class="fa fa-address-book"></i>
            <span>Eventos</span>
            <span class="pull-right-container">
              <i class="fa fa-angle-left pull-right"></i>
@@ -69,11 +69,34 @@
          </a>
          <ul class="treeview-menu">
            <!-- <li><a [routerLink]="[ '/usuarios' ]"><i class="fa fa-list-ul"></i> Usuarios</a> </li> -->
-           <li><a [routerLink]="[ '/navegacion/eventos/listar' ]"><i class="fa fa-list-ul"></i> Ver todos</a> </li>
-           <li><a [routerLink]="[ '/navegacion/eventos/agregar' ]"><i class="fa fa-plus-circle"></i> Agregar</a></li>
+           <li routerLinkActive="active"><a [routerLink]="[ '/navegacion/eventos/listar' ]"><i
+                 class="fa fa-list-ul"></i> Ver todos</a> </li>
+           <li routerLinkActive="active"><a [routerLink]="[ '/navegacion/eventos/agregar' ]"><i
+                 class="fa fa-plus-circle"></i> Agregar</a></li>
          </ul>
        </li>
        <!-- Fin Eventos -->
+
+       <!--  Categoria Eventos -->
+       <li class="treeview">
+         <a href="#">
+           <i class="fa fa-book"></i>
+           <span>Categoria Eventos</span>
+           <span class="pull-right-container">
+             <i class="fa fa-angle-left pull-right"></i>
+           </span>
+         </a>
+         <ul class="treeview-menu">
+           <!-- <li><a [routerLink]="[ '/usuarios' ]"><i class="fa fa-list-ul"></i> Usuarios</a> </li> -->
+           <li routerLinkActive="active"><a [routerLink]="[ '/navegacion/categoria-eventos/listar' ]"><i
+                 class="fa fa-list-ul"></i> Ver todos</a>
+           </li>
+           <li routerLinkActive="active"><a [routerLink]="[ '/navegacion/categoria-eventos/agregar' ]"><i
+                 class="fa fa-plus-circle"></i>
+               Agregar</a></li>
+         </ul>
+       </li>
+       <!--  Fin categoria Eventos -->
 
        <!-- Invitados -->
        <li class="treeview">
