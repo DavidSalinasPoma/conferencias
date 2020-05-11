@@ -69,18 +69,21 @@ export class AgregarCategoriaComponent implements OnInit {
     this.formulario.patchValue({
       icono: icon
     });
-    console.log(this.formulario.value);
+    // console.log(this.formulario.value);
 
     this.category.eventoCategoria = this.formulario.value.categoria;
     this.category.icono = this.formulario.value.icono;
 
+    console.log(this.category);
+
+
     this.categoriaService.storeCategoria(this.category, this.token).subscribe(
       response => {
-        console.log(response);
+        // console.log(response);
         this.toaster.success(response.message);
       },
       error => {
-        console.log(error);
+        // console.log(error);
         this.toaster.error(error.error.message);
       }
     );
@@ -148,12 +151,13 @@ export class AgregarCategoriaComponent implements OnInit {
       console.log(nameIcon);
     } else {
       nameIcon = ((event.target as HTMLTextAreaElement).className).substring(3);
-      console.log(nameIcon);
+      // console.log(nameIcon);
     }
-    this.formulario.patchValue({
+    this.formulario.setValue({
+      categoria: '',
       icono: nameIcon
     });
-    console.log(this.formulario.value);
+    // console.log(this.formulario.value);
 
   }
 }

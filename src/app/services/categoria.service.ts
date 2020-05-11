@@ -53,7 +53,7 @@ export class CategoriaService {
    */
   public storeCategoria(categoria: Categoria, token: any): Observable<any> {
     // console.log(invitados);
-    const json = JSON.stringify(Categoria); // convertimos el objeto a json.
+    const json = JSON.stringify(categoria); // convertimos el objeto a json.
     const params = 'json=' + json; // La varible con la que recibe el parametro. en el API.
     // console.log(params);
 
