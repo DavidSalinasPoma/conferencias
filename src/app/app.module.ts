@@ -18,7 +18,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { DataTablesModule } from 'angular-datatables';
 
 // Para trabajar con imagenes
-import { AngularFileUploaderModule } from "angular-file-uploader";
+// import { AngularFileUploaderModule } from "angular-file-uploader";
 
 // Modales
 import { NgxSmartModalModule } from 'ngx-smart-modal';
@@ -99,7 +99,7 @@ import { EditarCategoriaComponent } from './components/navegacion/eventos-catego
     DataTablesModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
-    AngularFileUploaderModule,
+    // AngularFileUploaderModule,
     NgSelectModule,
     NgxSmartModalModule.forRoot(),
     // IconPickerModule

@@ -24,7 +24,6 @@
     "@ng-select/ng-select": "^4.0.0",
     "@types/lodash": "^4.14.149",
     "angular-datatables": "^9.0.1",
-    "angular-file-uploader": "^4.1.4",
     "datatables.net": "^1.10.20",
     "datatables.net-dt": "^1.10.20",
     "font-awesome": "^4.7.0",
