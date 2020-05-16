@@ -55,6 +55,7 @@ import { EditarInvitadosComponent } from './components/navegacion/eventos-invita
 import { AgregarCategoriaComponent } from './components/navegacion/eventos-categoria/agregar-categoria/agregar-categoria.component';
 import { ListaCategoriaComponent } from './components/navegacion/eventos-categoria/lista-categoria/lista-categoria.component';
 import { EditarCategoriaComponent } from './components/navegacion/eventos-categoria/editar-categoria/editar-categoria.component';
+import { EditarEventosComponent } from './components/navegacion/eventos/editar-eventos/editar-eventos.component';
 
 
 
@@ -88,6 +89,7 @@ import { EditarCategoriaComponent } from './components/navegacion/eventos-catego
     AgregarCategoriaComponent,
     ListaCategoriaComponent,
     EditarCategoriaComponent,
+    EditarEventosComponent,
 
   ],
   imports: [
@@ -102,7 +104,9 @@ import { EditarCategoriaComponent } from './components/navegacion/eventos-catego
     // AngularFileUploaderModule,
     NgSelectModule,
     NgxSmartModalModule.forRoot(),
-    // IconPickerModule
+    // IconPickerModule,
+
+
 
   ],
   providers: [],
