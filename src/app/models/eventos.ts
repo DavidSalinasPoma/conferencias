@@ -1,12 +1,17 @@
+
 export class Eventos {
     constructor(
         public id: number,
         public nombreEvento: string,
-        public fechaEvento: any,
-        public horaEvento: any,
-        public categoriaId: number,
-        public invitadosId: number,
-        public usuariosId: number
+        // tslint:disable-next-line: variable-name
+        public fecha_evento: any,
+        // tslint:disable-next-line: variable-name
+        public hora_evento: any,
+        // tslint:disable-next-line: variable-name
+        public categoria_id: number,
+        // tslint:disable-next-line: variable-name
+        public invitados_id: number,
+
     ) {
 
     }

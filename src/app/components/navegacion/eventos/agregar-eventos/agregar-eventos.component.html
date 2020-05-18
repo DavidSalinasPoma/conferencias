@@ -25,7 +25,7 @@
         <section class="content">
           <div class="row">
             <!-- left column -->
-            <div class="col">
+            <div class="col-lg-6">
               <!-- general form elements -->
               <div class="box box-primary sombra">
                 <div class="box-header with-border">
@@ -52,7 +52,7 @@
                         <!-- Errores con expresiones regulares -->
                         <div *ngIf="this.evento.hasError('maxlength')" class="animated fadeIn fast text-color-danger"
                           id="">
-                          El nombre debe contener maximo 50 caracteres.
+                          El titulo del evento no debe pasar de los 300 caracteres.
                         </div>
                         <!-- Errores con expresiones regulares -->
                         <div *ngIf="this.evento.hasError('required')" class="animated fadeIn fast text-color-danger"
@@ -90,6 +90,14 @@
                           <i class="fa fa-calendar"></i>
                         </div>
                       </div>
+                      <!-- Validacion -->
+                      <div *ngIf="this.fecha.invalid && (this.fecha.dirty || this.fecha.touched)">
+                        <!-- Errores con expresiones regulares -->
+                        <div *ngIf="this.fecha.hasError('required')" class="animated fadeIn fast text-color-danger"
+                          id="">
+                          La fecha es requerida.
+                        </div>
+                      </div>
                     </div>
 
 
@@ -100,6 +108,14 @@
                         <input type="time" class="form-control" id="" formControlName="hora" placeholder="hh:mm">
                         <div class="input-group-addon">
                           <i class="fa fa-clock-o"></i>
+                        </div>
+                      </div>
+                      <!-- Validacion -->
+                      <div *ngIf="this.hora.invalid && (this.hora.dirty || this.hora.touched)">
+                        <!-- Errores con expresiones regulares -->
+                        <div *ngIf="this.hora.hasError('required')" class="animated fadeIn fast text-color-danger"
+                          id="">
+                          La hora es requerida.
                         </div>
                       </div>
                       <!-- /.input group -->

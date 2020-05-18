@@ -1,1 +1,79 @@
-<p>lista-eventos works!</p>
+<div class="animated fadeIn fast" id="">
+  <section class="content-header">
+    <h1>
+      Lista categoria eventos
+      <small>Administra las categorias de los eventos</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+      <li><a href="#">Categoria eventos</a></li>
+      <li class="active">Ver todos</li>
+    </ol>
+  </section>
+
+  <!-- Seccion tabla de ddatos -->
+  <section class="content">
+    <div class="box-body pding">
+
+      <div class="row">
+        <div class="col">
+          <div class="box box-primary sombra">
+            <div class="box-header with-border">
+              <h3 class="box-title color-titulo text-color-succes">Tabla de datos de las categorias</h3>
+            </div>
+            <!-- Aplicación Principal -->
+            <div class="box-body">
+
+              <!-- <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"></table> -->
+              <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"
+                class="table table-bordered table-striped animated fadeIn fast" id="tabla-perfil">
+                <thead>
+                  <tr>
+                    <th>Codigo categoria</th>
+                    <th>Categoria</th>
+                    <th>Icono</th>
+                    <th>Administrador</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of this.listaCategoria">
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.eventoCategoria }}</td>
+                    <td>{{item.icono}}</td>
+                    <td>{{item.usuarios.nombres+' '+ item.usuarios.apellidos}}</td>
+                    <td *ngIf="item.estado else deshabilitado">
+                      <button class="btn btn-success btn-xs">Habilitado</button>
+                    </td>
+                    <ng-template #deshabilitado>
+                      <td>
+                        <button class="btn btn-danger btn-xs">Deshabilitado</button>
+                      </td>
+                    </ng-template>
+
+                    <td class="d-flexbox">
+
+                      <a class=" marginIsquierda" title="Editar Perfil Usuario" data-id="" style="cursor:pointer"
+                        (click)="this.editCatergoria(item.id)"><i
+                          class="fa fa-pencil text-green editarEliminar"></i></a>
+                      <a class=" marginIsquierda" title="Eliminar Perfil" data-id="" style="cursor:pointer"
+                        (click)="this.eliminarCategoria(item.id)"><i
+                          class="fa fa-trash text-red editarEliminar"></i></a>
+
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+  </section>

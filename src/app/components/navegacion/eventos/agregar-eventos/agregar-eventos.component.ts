@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
 // Formularios
-import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
+import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 
 // Servicios
 import { CategoriaService } from '../../../../services/categoria.service';
 import { InvitadosService } from '../../../../services/invitados.service';
+import { EventosService } from '../../../../services/eventos.service';
+import { UserService } from 'src/app/services/user.service';
 
 // DatePicker
 import { IMyDpOptions } from 'mydatepicker';
@@ -20,6 +22,14 @@ import { IMyDpOptions } from 'mydatepicker';
 
 // 3.- en el index:
 // declare var timePicker: any;
+
+// Modelos
+import { Eventos } from '../../../../models/eventos';
+
+// Notificaciones
+import Swal from 'sweetalert2';
+import { ToastrService } from 'ngx-toastr';
+
 
 // Para autocompletado
 interface HtmlInputEvent extends Event {
@@ -58,19 +68,25 @@ export class AgregarEventosComponent implements OnInit {
   // Formularo reactivo
   public formulario: FormGroup;
 
+  // Modelo de datos
+  public eventos: Eventos;
+
+  // Token de usuario
+  public token: object;
+
   constructor(
     private fb: FormBuilder,
     private categoriaServices: CategoriaService,
-    private invitadoServices: InvitadosService
+    private invitadoServices: InvitadosService,
+    private eventoServices: EventosService,
+    private userServices: UserService,
+    private toaster: ToastrService
   ) {
-    // Prueba biblioteca javaScript
-    // console.log(timePicker);
-
-
-
+    this.eventos = new Eventos(0, '', '', '', 0, 0);
     this.cargarCategoria();
     this.cargarInvitado();
     this.crearFormulario();
+    this.token = this.userServices.getToken();
   }
 
   ngOnInit(): void {
@@ -85,11 +101,23 @@ export class AgregarEventosComponent implements OnInit {
    */
   public crearFormulario() {
     this.formulario = this.fb.group({
-      evento: [''],
-      categoria: [''],
-      fecha: [''],
-      hora: [''],
-      invitado: ['']
+      evento: ['', Validators.compose([
+        Validators.required,
+        Validators.pattern("^[A-Za-zÁÉÍÓÚáéíóúñÑ.;,?¿ ]+$"),
+        Validators.maxLength(300)
+      ])],
+      categoria: ['', Validators.compose([
+        Validators.required
+      ])],
+      fecha: ['', Validators.compose([
+        Validators.required
+      ])],
+      hora: ['', Validators.compose([
+        Validators.required
+      ])],
+      invitado: ['', Validators.compose([
+        Validators.required
+      ])]
     });
   }
 
@@ -108,6 +136,28 @@ export class AgregarEventosComponent implements OnInit {
    */
   public onSubmit() {
     console.log(this.formulario.value);
+
+    // Llenando el modelo de datos eventos
+    this.eventos.nombreEvento = this.formulario.value.evento;
+    this.eventos.categoria_id = this.formulario.value.categoria;
+    this.eventos.fecha_evento = this.formulario.value.fecha;
+    this.eventos.hora_evento = this.formulario.value.hora;
+    this.eventos.invitados_id = this.formulario.value.invitado;
+
+    console.log(this.eventos);
+    // Peticiones http a la base de datos
+    this.eventoServices.storeEvento(this.eventos, this.token).subscribe(
+      response => {
+        if (response.status === 'success') {
+          this.toaster.success(response.message);
+          this.refrescarFormulario();
+        }
+      },
+      error => {
+        this.toaster.error(error.error.message);
+      }
+    );
+
 
   }
 
@@ -159,7 +209,7 @@ export class AgregarEventosComponent implements OnInit {
       response => {
         const perfil = Object.values(response);
         datosInvitado = perfil[2];
-        console.log(datosInvitado);
+        // console.log(datosInvitado);
         for (const item of datosInvitado) {
           this.listInvitado.push({ value: item.id, label: item.nombres });
         }
