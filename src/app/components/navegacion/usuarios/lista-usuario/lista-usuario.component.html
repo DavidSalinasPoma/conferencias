@@ -89,11 +89,11 @@
   </section>
 
   <!-- Modal para editar -->
-  <ngx-smart-modal #myModal identifier="myModal" class="modales">
+  <ngx-smart-modal #myModal identifier="myModal" class="modales col">
     <!-- Modales -->
 
     <div class="modal-header bg-color-danger">
-      <h4 class="modal-title">Default Modal</h4>
+      <h4 class="modal-title">Editar Usuario</h4>
     </div>
     <div class="modal-body">
       <!-- Formulario -->
@@ -150,7 +150,7 @@
 
             </div>
 
-            <!-- Campo carnet -->
+            <!-- Campo apellidos -->
             <div class="form-group">
               <label for="apellidos">Apellidos</label>
               <input type="text" class="form-control" id="apellidos" placeholder="Apellidos"
@@ -242,8 +242,8 @@
           </div>
           <!-- Boton de enviar -->
           <div class="modal-footer boton-editar" id="">
-            <button type="submit" class="btn btn-success sombra" [disabled]="this.formulario.invalid">AGREGAR</button>
             <button type="button" class="btn btn-secondary btn-flat sombra" (click)="myModal.close()">CANCELAR</button>
+            <button type="submit" class="btn btn-success sombra" [disabled]="this.formulario.invalid">MODIFICAR</button>
           </div>
         </div>
 

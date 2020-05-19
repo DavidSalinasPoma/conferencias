@@ -330,6 +330,8 @@ export class ListaUsuarioComponent implements OnInit, OnDestroy {
       }
     );
   }
+
+
   public listaEditUser() {
     this.userServices.indexUsuario().subscribe(
       response => {

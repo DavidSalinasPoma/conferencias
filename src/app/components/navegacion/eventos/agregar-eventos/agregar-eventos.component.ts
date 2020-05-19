@@ -135,7 +135,7 @@ export class AgregarEventosComponent implements OnInit {
    * onSubmit
    */
   public onSubmit() {
-    console.log(this.formulario.value);
+    // console.log(this.formulario.value);
 
     // Llenando el modelo de datos eventos
     this.eventos.nombreEvento = this.formulario.value.evento;
@@ -144,7 +144,7 @@ export class AgregarEventosComponent implements OnInit {
     this.eventos.hora_evento = this.formulario.value.hora;
     this.eventos.invitados_id = this.formulario.value.invitado;
 
-    console.log(this.eventos);
+    // console.log(this.eventos);
     // Peticiones http a la base de datos
     this.eventoServices.storeEvento(this.eventos, this.token).subscribe(
       response => {

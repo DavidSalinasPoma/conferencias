@@ -1,14 +1,15 @@
 import { Component, OnInit, ViewChild, ChangeDetectorRef, OnDestroy } from '@angular/core';
 
 // Servicios
-import { CategoriaService } from 'src/app/services/categoria.service';
+import { EventosService } from 'src/app/services/eventos.service';
 import { global } from '../../../../services/global';
 import { UserService } from '../../../../services/user.service';
 
 
 
+
 // Modelos
-import { Categoria } from 'src/app/models/categoria';
+import { Eventos } from 'src/app/models/eventos';
 
 // Para las tablas de datos
 import { DataTableDirective } from 'angular-datatables';
@@ -38,8 +39,7 @@ declare var $: any;
 export class ListaEventosComponent implements OnInit, OnDestroy {
 
   // Atributos de la clase
-  // public listaInvitados: Invitados;
-  public listaCategoria: Categoria;
+  public listaEventos: Eventos;
 
   // ***** Data tables ****
   public listaUsuarios: any;
@@ -59,9 +59,9 @@ export class ListaEventosComponent implements OnInit, OnDestroy {
   public token: object;
 
   constructor(
-    private categoriaServices: CategoriaService,
+    private eventoServices: EventosService,
     private chRef: ChangeDetectorRef,
-    private router: Router, private toaster: ToastrService, private userService: UserService) {
+    private userService: UserService, private router: Router, private toaster: ToastrService) {
 
     // Asigna la url del servicio y lo almacena en una varible global
     this.url = global.url;
@@ -71,21 +71,21 @@ export class ListaEventosComponent implements OnInit, OnDestroy {
 
 
   ngOnInit(): void {
-    this.indexCategorias();
+    this.indexEventos();
     this.configDatatables();
   }
 
   /**
    * indexInvitados Lista todos los registros de invitados
    */
-  public indexCategorias() {
+  public indexEventos() {
 
-    this.categoriaServices.indexCategoria().subscribe(
+    this.eventoServices.indexEvento().subscribe(
       response => {
         // console.log(response);
         if (response.status === 'success') {
 
-          this.listaCategoria = response.categoria;
+          this.listaEventos = response.evento;
           // console.log(this.listaInvitados);
           // Detecta cambios de referencia entre paginas
           this.chRef.detectChanges(); // Datatables al refrescar no pierde los datos
@@ -102,16 +102,16 @@ export class ListaEventosComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * indexInvitados Lista todos los registros de invitados
+   * indexDelete actualiza la lista despues de la eliminacion
    */
-  public indexCategorias2() {
+  public indexDelete() {
 
-    this.categoriaServices.indexCategoria().subscribe(
+    this.eventoServices.indexEvento().subscribe(
       response => {
         // console.log(response);
         if (response.status === 'success') {
 
-          this.listaCategoria = response.categoria;
+          this.listaEventos = response.evento;
           this.rerender();
         }
       },
@@ -125,9 +125,9 @@ export class ListaEventosComponent implements OnInit, OnDestroy {
   /**
    * editInvitados
    */
-  public editCatergoria(idInvitados: number) {
+  public editEvento(idInvitados: number) {
     // Redireccionamos al componente editarInvitados
-    this.router.navigate(['/navegacion/categoria-eventos/editar', idInvitados]);
+    this.router.navigate(['/navegacion/eventos/editar', idInvitados]);
   }
 
 
@@ -188,7 +188,7 @@ export class ListaEventosComponent implements OnInit, OnDestroy {
   /**
    * eliminarInvitado Elimina si no esta registrado en ningun evento
    */
-  public eliminarCategoria(idCategoria: number) {
+  public eliminarEvento(idEvento: number) {
 
     Swal.fire({
       title: 'Estas seguro?',
@@ -205,19 +205,19 @@ export class ListaEventosComponent implements OnInit, OnDestroy {
       if (result.value) {
 
         // Elimninado el registro
-        this.categoriaServices.destroyCategoria(idCategoria, this.token).subscribe(
+        this.eventoServices.destroyCategoria(idEvento, this.token).subscribe(
           response => {
             // console.log(response);
 
             if (response.status === 'success') {
 
               this.toaster.success(response.message);
-              this.indexCategorias2();
+              this.indexDelete();
 
             }
           },
           error => {
-            this.toaster.error(error.error.message2, error.error.message);
+            this.toaster.error(error.error.message);
           }
         );
 

@@ -67,7 +67,7 @@ export class EditarCategoriaComponent implements OnInit {
 
   // **METODOS CRUD**/
   /**
-   * name
+   * onSubmit modificar los datos de categorias
    */
   public onSubmit() {
 
@@ -82,19 +82,34 @@ export class EditarCategoriaComponent implements OnInit {
     this.category.eventoCategoria = this.formulario.value.categoria;
     this.category.icono = this.formulario.value.icono;
 
-    console.log(this.category);
+    // console.log(this.category);
+    Swal.fire({
+      title: 'Estas seguro?',
+      text: "Esta apunto de modificar un registro.",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#28a745',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, Modifiacar!',
+      cancelButtonText: 'Cancelar',
+      reverseButtons: true
+    }).then((result) => {
 
+      if (result.value) {
+        this.categoriaService.updateCategoria(this.category, this.token, this.idCategoria).subscribe(
+          response => {
+            // console.log(response);
+            this.toaster.success(response.message);
+          },
+          error => {
+            // console.log(error);
+            this.toaster.error(error.error.message);
+          }
+        );
 
-    this.categoriaService.updateCategoria(this.category, this.token, this.idCategoria).subscribe(
-      response => {
-        // console.log(response);
-        this.toaster.success(response.message);
-      },
-      error => {
-        // console.log(error);
-        this.toaster.error(error.error.message);
       }
-    );
+    });
+
   }
 
   /**

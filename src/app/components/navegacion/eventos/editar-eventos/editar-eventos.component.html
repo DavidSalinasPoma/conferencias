@@ -1,1 +1,158 @@
-<p>editar-eventos works!</p>
+<div class="animated fadeIn fast" id="">
+
+  <section class="content-header">
+    <h1>
+      Gestión eventos
+      <small>Llena el formulario para registrar un evento</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+      <li><a href="#">Eventos</a></li>
+      <li class="active">Modificar</li>
+    </ol>
+  </section>
+
+  <!-- Formulario -->
+  <!-- Main content -->
+  <section class="content">
+    <!-- Default box -->
+    <div class="box">
+      <div class="box-header with-border">
+        <h3 class="box-title color-titulo">Formulario de registro</h3>
+      </div>
+
+      <div class="box-body">
+        <section class="content">
+          <div class="row">
+            <!-- left column -->
+            <div class="col-lg-6">
+              <!-- general form elements -->
+              <div class="box box-primary sombra">
+                <div class="box-header with-border">
+                  <h3 class="box-title color-titulo text-color-danger">Modificar Evento</h3>
+                </div>
+                <!-- Formulario -->
+                <div class="box-body">
+
+                  <form [formGroup]="this.formulario" (submit)="this.onSubmit()" novalidate>
+
+                    <!-- Campo Titulo evento -->
+                    <div class="form-group" id="">
+                      <label for="evento">Titulo evento:</label>
+                      <input type="text" class="form-control" formControlName="evento">
+                      <!-- Validacion -->
+                      <!-- Preguntamos si es invalido y si esta sucio o a sido tocado -->
+                      <div *ngIf="this.evento.invalid && (this.evento.dirty || this.evento.touched)">
+
+                        <!-- Errores con expresiones regulares -->
+                        <div *ngIf="this.evento.hasError('pattern')" class="animated fadeIn fast text-color-danger"
+                          id="">
+                          El campo debe contener solo letras.
+                        </div>
+                        <!-- Errores con expresiones regulares -->
+                        <div *ngIf="this.evento.hasError('maxlength')" class="animated fadeIn fast text-color-danger"
+                          id="">
+                          El titulo del evento no debe pasar de los 300 caracteres.
+                        </div>
+                        <!-- Errores con expresiones regulares -->
+                        <div *ngIf="this.evento.hasError('required')" class="animated fadeIn fast text-color-danger"
+                          id="">
+                          El nombre es requerido.
+                        </div>
+
+                      </div>
+                    </div>
+
+                    <!-- Campo para perfil -->
+                    <div class="form-group">
+                      <label for="categoria">Categoria:</label>
+                      <ng-select [items]="this.listCategoria" [selectOnTab]="true" bindValue="value"
+                        labelForId="categoria" placeholder="-Seleccione-" formControlName="categoria">
+                      </ng-select>
+
+                      <div *ngIf="this.categoria.invalid && (this.categoria.dirty || this.categoria.touched)">
+                        <!-- Errores con expresiones regulares -->
+                        <div *ngIf="this.categoria.hasError('required')" class="animated fadeIn fast text-color-danger"
+                          id="">
+                          El categoria es requerido.
+                        </div>
+                      </div>
+                    </div>
+
+
+
+                    <!-- Campo Fecha del evento -->
+                    <div class="form-group" id="">
+                      <label for="fecha">Fecha evento:</label>
+                      <div class="input-group ">
+                        <input type="date" class="form-control" name="fecha" id="" formControlName="fecha">
+                        <div class="input-group-addon">
+                          <i class="fa fa-calendar"></i>
+                        </div>
+                      </div>
+                      <!-- Validacion -->
+                      <div *ngIf="this.fecha.invalid && (this.fecha.dirty || this.fecha.touched)">
+                        <!-- Errores con expresiones regulares -->
+                        <div *ngIf="this.fecha.hasError('required')" class="animated fadeIn fast text-color-danger"
+                          id="">
+                          La fecha es requerida.
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <!-- Campo Hora del evento -->
+                    <div class="form-group">
+                      <label for="hora">Hora:</label>
+                      <div class="input-group ">
+                        <input type="time" class="form-control" id="" formControlName="hora" placeholder="hh:mm">
+                        <div class="input-group-addon">
+                          <i class="fa fa-clock-o"></i>
+                        </div>
+                      </div>
+                      <!-- Validacion -->
+                      <div *ngIf="this.hora.invalid && (this.hora.dirty || this.hora.touched)">
+                        <!-- Errores con expresiones regulares -->
+                        <div *ngIf="this.hora.hasError('required')" class="animated fadeIn fast text-color-danger"
+                          id="">
+                          La hora es requerida.
+                        </div>
+                      </div>
+                      <!-- /.input group -->
+                    </div>
+                    <!-- /.form group -->
+
+                    <!-- Campo invitado -->
+                    <div class="form-group">
+                      <label for="invitado">Invitado:</label>
+                      <ng-select [items]="this.listInvitado" [selectOnTab]="true" bindValue="value"
+                        labelForId="invitado" placeholder="-Seleccione-" formControlName="invitado">
+                      </ng-select>
+
+                      <div *ngIf="this.invitado.invalid && (this.invitado.dirty || this.invitado.touched)">
+                        <!-- Errores con expresiones regulares -->
+                        <div *ngIf="this.invitado.hasError('required')" class="animated fadeIn fast text-color-danger"
+                          id="">
+                          El invitado es requerido.
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <div class="uk-button-group" id="">
+                      <button type="button" class="btn btn-default sombra" (click)="this.cancelar()">CANCELAR</button>
+                      <button type="submit" class="btn btn-danger sombra  marginIsquierda"
+                        [disabled]="this.formulario.invalid">MODIFICAR</button>
+                    </div>
+
+                  </form>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+
+    </div>

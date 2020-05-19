@@ -12,5 +12,5 @@ import { EditarEventosComponent } from '../editar-eventos/editar-eventos.compone
 export const eventosRoutes: Routes = [
   { path: 'agregar', component: AgregarEventosComponent },
   { path: 'listar', component: ListaEventosComponent },
-  { path: 'editar', component: EditarEventosComponent }
+  { path: 'editar/:id', component: EditarEventosComponent }
 ];
