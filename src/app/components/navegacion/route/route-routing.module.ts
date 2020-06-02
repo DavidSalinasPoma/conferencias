@@ -17,8 +17,8 @@ import { RegalosComponent } from '../regalos/regalos.component';
 import { EventosInvitadosComponent } from '../eventos-invitados/eventos-invitados.component';
 import { EventosCategoriaComponent } from '../eventos-categoria/eventos-categoria.component';
 import { categoriaRoutes } from '../eventos-categoria/router/route-routing.module';
-
-
+import { RegistradosComponent } from '../registrados/registrados.component';
+import { registradosRoutes } from '../registrados/router/router-routing.module';
 
 export const navegacionRoutes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
@@ -27,4 +27,5 @@ export const navegacionRoutes: Routes = [
   { path: 'eventos', component: EventosComponent, children: eventosRoutes },
   { path: 'invitados', component: EventosInvitadosComponent, children: invitadosRoutes },
   { path: 'categoria-eventos', component: EventosCategoriaComponent, children: categoriaRoutes },
+  { path: 'registrados', component: RegistradosComponent, children: registradosRoutes },
 ];

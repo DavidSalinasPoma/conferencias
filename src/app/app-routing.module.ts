@@ -6,7 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 // Rutas Hija navegacion
 import { navegacionRoutes } from './components/navegacion/route/route-routing.module';
 
-// los componentes de primer nivel Padre
+// los componentes de primer nivel PADRE
 import { LoginComponent } from './components/login/login.component';
 import { NavegacionComponent } from './components/navegacion/navegacion.component';
 
@@ -16,11 +16,7 @@ const ROUTES: Routes = [
   { path: '', component: LoginComponent },
   { path: 'inicio', component: LoginComponent },
   // estas dos rutas interctuaran con La contraseña
-  {
-    path: 'navegacion',
-    component: NavegacionComponent,
-    children: navegacionRoutes
-  },
+  { path: 'navegacion', component: NavegacionComponent, children: navegacionRoutes },
   // {
   //   path: 'usuarios/:id',
   //   component: UsuariosComponent,

@@ -56,6 +56,9 @@ import { AgregarCategoriaComponent } from './components/navegacion/eventos-categ
 import { ListaCategoriaComponent } from './components/navegacion/eventos-categoria/lista-categoria/lista-categoria.component';
 import { EditarCategoriaComponent } from './components/navegacion/eventos-categoria/editar-categoria/editar-categoria.component';
 import { EditarEventosComponent } from './components/navegacion/eventos/editar-eventos/editar-eventos.component';
+import { AgregarReservaComponent } from './components/navegacion/registrados/agregar-reserva/agregar-reserva.component';
+import { EditarReservaComponent } from './components/navegacion/registrados/editar-reserva/editar-reserva.component';
+import { ListaReservaComponent } from './components/navegacion/registrados/lista-reserva/lista-reserva.component';
 
 
 
@@ -90,6 +93,9 @@ import { EditarEventosComponent } from './components/navegacion/eventos/editar-e
     ListaCategoriaComponent,
     EditarCategoriaComponent,
     EditarEventosComponent,
+    AgregarReservaComponent,
+    EditarReservaComponent,
+    ListaReservaComponent,
 
   ],
   imports: [

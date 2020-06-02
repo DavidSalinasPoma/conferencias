@@ -94,4 +94,7 @@ export class EventosService {
     return this.http.delete(this.url + 'eventos/' + idEvento, { headers: headers });
 
   }
+
+
+
 }

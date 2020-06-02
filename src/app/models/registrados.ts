@@ -4,12 +4,13 @@ export class Registrados {
         public nombres: string,
         public apellidos: string,
         public email: string,
-        public pasesArticulos: string,
-        public eventosRegistrados: string,
-        public regalosId: number,
+        // tslint:disable-next-line: variable-name
+        public pases_articulos: string,
+        // tslint:disable-next-line: variable-name
+        public regalos_id: number,
         public estado: number,
-        public totalPagado: number,
-        public usuariosId: number,
+        // tslint:disable-next-line: variable-name
+        public total_pagado: number,
     ) {
 
     }

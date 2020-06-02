@@ -68,7 +68,7 @@ and also import other style files */
 }
 
 .marginIsquierda {
-  margin-left: 2px !important;
+  margin-left: 5px !important;
 
 }
 
@@ -104,6 +104,10 @@ and also import other style files */
   color: #dc3545;
 }
 
+.text-color-webcam {
+  color: #fe4918;
+}
+
 .editarEliminar {
   font-size: 19px;
 }
@@ -115,4 +119,15 @@ and also import other style files */
 .bg-color-danger {
   background-color: #dc3545;
   color: aliceblue;
+}
+
+.btn-color-webcam {
+  color: aliceblue !important;
+  background-color: #fe4918;
+
+}
+
+.btn-color-webcam:hover {
+  color: aliceblue;
+  background-color: #da4117;
 }

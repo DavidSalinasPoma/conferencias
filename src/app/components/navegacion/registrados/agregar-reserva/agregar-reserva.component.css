@@ -1,0 +1,99 @@
+.precio {
+  font-size: 2.6rem;
+  font-weight: bold;
+}
+
+.flex-padre {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  padding-left: 0%;
+}
+
+.flex-padre li {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  list-style: none;
+}
+
+
+.flex-registro {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.caja-talleres {
+  margin-right: 20px;
+}
+
+.entradas {
+  margin-right: 30px;
+}
+
+.bord {
+  border: 1px solid rgba(169, 169, 169, 0.103);
+  border-radius: 5%;
+}
+
+.flex-padre li span {
+  font-weight: bold;
+}
+
+.caja-product {
+  margin-bottom: 15px;
+  width: 300px;
+}
+
+blockquote {
+  border-bottom: 1px solid rgba(169, 169, 169, 0.096);
+}
+
+.flex-producto {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.flex-radio {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.input-radio {
+  margin-top: 10px;
+  margin-right: 15px;
+}
+
+h3 {
+  margin-top: 0;
+}
+
+.sombra2 {
+  -webkit-box-shadow: 0px 2px 15px -4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 2px 15px -4px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 2px 15px -4px rgba(0, 0, 0, 0.75) !important;
+}
+
+.icono-producto {
+  font-size: 3rem;
+  color: #28a745;
+}
+
+.resumen {
+  width: 50%;
+}
+
+span.text-color-webcam {
+  font-size: 1.8rem;
+}
+
+.back-color {
+  background-color: rgba(236, 236, 240, 0.479);
+  padding: 8px 0px;
+}
