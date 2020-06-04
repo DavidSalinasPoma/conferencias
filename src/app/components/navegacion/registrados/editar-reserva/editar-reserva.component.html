@@ -1,1 +1,283 @@
-<p>editar-reserva works!</p>
+<div class="animated fadeIn fast" id="">
+
+  <section class="content-header">
+    <h1>
+      Crear nuevos registros de usuarios
+      <small>Llena el formulario para registrar un usuario</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+      <li><a href="#">Registrados</a></li>
+      <li class="active">Agregar</li>
+    </ol>
+  </section>
+
+  <!-- Formulario -->
+  <!-- Main content -->
+  <section class="content">
+    <!-- Default box -->
+
+    <div class="row">
+      <!-- left column -->
+      <div class="col">
+        <div class="box  box-primary sombra">
+          <div class="box-header with-border">
+            <h3 class="box-title color-titulo">Formulario de registro</h3>
+          </div>
+          <!-- Formulario -->
+          <div class="container" id="">
+
+            <div class="box-body">
+
+              <form [formGroup]="this.formulario" (submit)="this.onSubmit()" novalidate>
+
+                <!-- Campos nombre, apellidos y email -->
+                <!-- Pagos y extras -->
+                <h2>Ingrese sus datos</h2>
+                <div class="row" id="">
+                  <!-- Campo nombre del usuario registrado -->
+                  <div class="col-md-4" id="">
+                    <div class="form-group" id="">
+                      <label for="nombres">Nombres:</label>
+                      <input type="text" class="form-control" formControlName="nombres" autocomplete="on">
+                      <!-- Validacion -->
+                      <!-- Preguntamos si es invalido y si esta sucio o a sido tocado -->
+                      <div *ngIf="this.nombres.invalid && (this.nombres.dirty || this.nombres.touched)">
+
+                        <!-- Errores con expresiones regulares -->
+                        <div *ngIf="this.nombres.hasError('pattern')" class="animated fadeIn fast text-color-danger"
+                          id="">
+                          El campo debe contener solo letras.
+                        </div>
+                        <!-- Errores con expresiones regulares -->
+                        <div *ngIf="this.nombres.hasError('maxlength')" class="animated fadeIn fast text-color-danger"
+                          id="">
+                          Los nombres no debe pasar de los 70 caracteres.
+                        </div>
+                        <!-- Errores con expresiones regulares -->
+                        <div *ngIf="this.nombres.hasError('required')" class="animated fadeIn fast text-color-danger"
+                          id="">
+                          El nombre es requerido.
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Campo Apellidos del usuario registrado -->
+                  <div class="col-md-4" id="">
+                    <div class="form-group" id="">
+                      <label for="email">Apellidos:</label>
+                      <input type="text" class="form-control" formControlName="apellidos">
+                      <!-- Validacion -->
+                      <!-- Preguntamos si es invalido y si esta sucio o a sido tocado -->
+                      <div *ngIf="this.apellidos.invalid && (this.apellidos.dirty || this.apellidos.touched)">
+
+                        <!-- Errores con expresiones regulares -->
+                        <div *ngIf="this.apellidos.hasError('pattern')" class="animated fadeIn fast text-color-danger"
+                          id="">
+                          El campo debe contener solo letras.
+                        </div>
+                        <!-- Errores con expresiones regulares -->
+                        <div *ngIf="this.apellidos.hasError('maxlength')" class="animated fadeIn fast text-color-danger"
+                          id="">
+                          Los apellidos no debe pasar de los 100 caracteres.
+                        </div>
+                        <!-- Errores con expresiones regulares -->
+                        <div *ngIf="this.apellidos.hasError('required')" class="animated fadeIn fast text-color-danger"
+                          id="">
+                          El apellido es requerido.
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Campo Email del usuario registrado -->
+                  <div class="col-md-4" id="">
+                    <div class="form-group" id="">
+                      <label for="email">Email:</label>
+                      <input type="text" class="form-control" formControlName="email">
+                      <!-- Validacion -->
+                      <!-- Preguntamos si es invalido y si esta sucio o a sido tocado -->
+                      <div *ngIf="this.email.invalid && (this.email.dirty || this.email.touched)">
+
+                        <!-- Errores con expresiones regulares -->
+                        <div *ngIf="this.email.hasError('pattern')" class="animated fadeIn fast text-color-danger"
+                          id="">
+                          El email no es valido.
+                        </div>
+                        <!-- Errores con expresiones regulares -->
+                        <div *ngIf="this.email.hasError('maxlength')" class="animated fadeIn fast text-color-danger"
+                          id="">
+                          Los email no debe pasar de los 100 caracteres.
+                        </div>
+                        <!-- Errores con expresiones regulares -->
+                        <div *ngIf="this.email.hasError('required')" class="animated fadeIn fast text-color-danger"
+                          id="">
+                          El email es requerido.
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Fin campos nombres, apellidos y email -->
+
+
+
+                <h2>Elige un producto</h2>
+                <!-- Venta de productos -->
+                <div class="flex-producto">
+                  <!-- Viernes -->
+                  <label for="viernes" (click)="this.viernes()">
+                    <div class=" caja-product">
+                      <div class="thumbnail bord sombra2">
+                        <div class="caption">
+                          <div class="flex-radio" id="">
+                            <h4 class="text-color-webcam text-center">PASE POR DIA</h4>
+                            <label class="input-radio">
+                              <i *ngIf="this.diaViernes" class="fa fa-check icono-producto"></i>
+                            </label>
+                          </div>
+                          <p class="text-dark text-center precio">Bs. 100</p>
+                          <h3 class="text-color-webcam text-center">VIERNES</h3>
+
+                          <ul class="flex-padre">
+                            <li class=""><i class="fa fa-check text-success"></i><span> Bocadillos gratis</span></li>
+                            <li class=""><i class="fa fa-check text-success"></i><span> Todas las conferencias</span>
+                            </li>
+                            <li class=""><i class="fa fa-check text-success"></i><span> Todos los talleres</span></li>
+                          </ul>
+
+                        </div>
+                      </div>
+                    </div>
+                  </label>
+
+                  <!-- Todos los dias (tres dias) -->
+                  <label for="tres" (click)="this.domingo()">
+                    <div class=" caja-product">
+                      <div class="thumbnail bord sombra2">
+                        <div class="caption">
+                          <div class="flex-radio" id="">
+                            <h4 class="text-color-webcam text-center">TODOS LOS DIAS</h4>
+                            <label class="input-radio">
+                              <i *ngIf="this.diaDomingo" class="fa fa-check icono-producto"></i>
+                            </label>
+                          </div>
+                          <p class="text-dark text-center precio">Bs. 200</p>
+                          <h3 class="text-color-webcam text-center">TRES DIAS</h3>
+
+                          <ul class="flex-padre">
+                            <li class=""><i class="fa fa-check text-success"></i><span> Bocadillos gratis</span></li>
+                            <li class=""><i class="fa fa-check text-success"></i><span> Todas las conferencias</span>
+                            </li>
+                            <li class=""><i class="fa fa-check text-success"></i><span> Todos los talleres</span></li>
+                          </ul>
+
+                        </div>
+                      </div>
+                    </div>
+                  </label>
+
+                  <!-- Todos los dias (tres dias) -->
+                  <label for="sabado" (click)="this.sabado()">
+                    <div class=" caja-product">
+                      <div class="thumbnail bord sombra2">
+                        <div class="caption">
+                          <div class="flex-radio" id="">
+                            <h4 class="text-color-webcam text-center">DOS DIAS</h4>
+                            <label class="input-radio">
+                              <i *ngIf="this.diaSabado" class="fa fa-check icono-producto"></i>
+                            </label>
+                          </div>
+                          <p class="text-dark text-center precio">Bs. 150</p>
+                          <h3 class="text-color-webcam text-center">VIERNES Y SABADO</h3>
+
+                          <ul class="flex-padre">
+                            <li class=""><i class="fa fa-check text-success"></i><span> Bocadillos gratis</span></li>
+                            <li class=""><i class="fa fa-check text-success"></i><span> Todas las conferencias</span>
+                            </li>
+                            <li class=""><i class="fa fa-check text-success"></i><span> Todos los talleres</span></li>
+                          </ul>
+
+                        </div>
+                      </div>
+                    </div>
+                  </label>
+
+                </div>
+                <!-- Fin venta de tarjetas -->
+
+                <!-- Pagos y extras -->
+                <h2>Pagos y extras</h2>
+                <div class="flex-registro" id="">
+                  <!-- Formulario de pagos y extras -->
+                  <div class="entradas" id="">
+                    <!-- Campo camisetas -->
+                    <div class="form-group">
+                      <label for="camisa">Poleras del evento Bs. 40 (promocion 7% de dto.)</label>
+                      <input type="number" class="form-control" id="camisa" min="0" placeholder="0" value="0">
+                    </div>
+                    <!-- Campo etiquetas -->
+                    <div class="form-group">
+                      <label for="paquete">Paquete de 10 etiquetas Bs. 10 (HTML5, CSS3, JavaScript, Angular)</label>
+                      <input type="number" class="form-control" min="0" id="paquete" placeholder="0" value="0">
+                    </div>
+
+                    <div class="form-group" id="">
+                      <button type="button" class="btn btn-success btn-lg"
+                        (click)="this.calcularPrecio()">CALCULAR</button>
+                    </div>
+                  </div>
+                  <!-- Formulario de resumen -->
+                  <div class="resumen" id="">
+                    <div class="form-group" id="">
+                      <label for="resumen">Resumen de la compra:</label>
+                      <div class="back-color" id="resumen">
+                      </div>
+                    </div>
+
+                    <div class="form-group" id="">
+                      <label for="total">Total: <span class="text-color-webcam">
+                          {{ this.precioTotal }}</span></label>
+                      <input type="hidden" formControlName="total">
+                    </div>
+                    <!-- Campo regalo -->
+
+                    <div class="form-group" *ngIf="this.mostrarRegalo">
+                      <label for="regalo">Seleccione un regalo:</label>
+                      <ng-select [items]="this.listRegalos" [selectOnTab]="true" bindValue="value" labelForId="regalo"
+                        placeholder="-Seleccione-" formControlName="regalo" id="regalo">
+                      </ng-select>
+
+                      <div *ngIf="this.regalo.invalid && (this.regalo.dirty || this.regalo.touched)">
+                        <!-- Errores con expresiones regulares -->
+                        <div *ngIf="this.regalo.hasError('required')" class="animated fadeIn fast text-color-danger"
+                          id="">
+                          El regalo es requerido.
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group" id="">
+                      <button type="button" class="btn btn-default sombra btn-lg"
+                        (click)="this.refrescarFormulario()">CANCELAR</button>
+                      <button type="submit" class="btn btn-success sombra marginIsquierda btn-lg"
+                        [disabled]="this.formulario.invalid">PAGAR</button>
+                    </div>
+                  </div>
+
+                </div>
+
+              </form>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>

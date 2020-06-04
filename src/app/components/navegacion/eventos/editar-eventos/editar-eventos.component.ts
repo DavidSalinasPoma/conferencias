@@ -10,7 +10,7 @@ import { EventosService } from '../../../../services/eventos.service';
 import { UserService } from 'src/app/services/user.service';
 
 // DatePicker
-import { IMyDpOptions } from 'mydatepicker';
+// import { IMyDpOptions } from 'mydatepicker';
 
 // Modelos
 import { Eventos } from '../../../../models/eventos';

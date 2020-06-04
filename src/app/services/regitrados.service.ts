@@ -83,9 +83,10 @@ export class RegitradosService {
   /**
    *  // Destroy elimina un registro de la tabla de datos.
    */
-  public destroyRegistro(idRegistrado): Observable<any> {
+  public destroyRegistro(idRegistrado: number, token: any): Observable<any> {
 
-    const headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded'); // la cabecera de conexion
+    const headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+      .set('Authorization', token); // la cabecera de conexion
     // retornamos respuestas de El APIRESTFUL
     return this.http.delete(this.url + 'registrados/' + idRegistrado, { headers: headers });
 

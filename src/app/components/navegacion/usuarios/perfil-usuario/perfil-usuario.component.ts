@@ -312,18 +312,7 @@ export class PerfilUsuarioComponent implements OnInit, OnDestroy {
             // Primero json a un obejto, luego aobjeto a array
             const listaPermisos = Object.values(JSON.parse(listSoloPerfil[index].permisos));
             listSoloPerfil[index].permisos = Object.values(JSON.parse(listSoloPerfil[index].permisos));
-
-            // console.log(listSoloPerfil[index].permisos);
-
-            // tslint:disable-next-line: prefer-for-of
-            // for (let j = 0; j < listSoloPerfil[index].permisos.length; j++) {
-            //   // datosPermisos[index].push(this.listaPerfil[index].permisos[j]);
-            //   // console.log((listSoloPerfil[index].permisos)[j]);
-
-            // }
-            // console.log("****");
           }
-          // console.log(this.listaPerfil);
 
           this.listaPerfil = listSoloPerfil.reverse();
 

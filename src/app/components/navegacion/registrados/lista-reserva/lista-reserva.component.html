@@ -1,1 +1,93 @@
-<p>lista-reserva works!</p>
+<div class="animated fadeIn fast" id="">
+  <section class="content-header">
+    <h1>
+      Lista de eventos
+      <small>Administra los eventos</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+      <li><a href="#">Eventos</a></li>
+      <li class="active">Ver todos</li>
+    </ol>
+  </section>
+
+  <!-- Seccion tabla de ddatos -->
+  <section class="content">
+    <div class="box-body pding">
+
+      <div class="row">
+        <div class="col">
+          <div class="box box-primary sombra">
+            <div class="box-header with-border">
+              <h3 class="box-title color-titulo text-color-succes">Tabla de datos de los eventos</h3>
+            </div>
+            <!-- Aplicación Principal -->
+            <div class="box-body">
+
+              <!-- <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"></table> -->
+              <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"
+                class="table table-bordered table-striped animated fadeIn fast" id="tabla-perfil">
+                <thead>
+                  <tr>
+                    <th>Codigo evento</th>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Email</th>
+                    <th>Fecha registro</th>
+                    <th>Articulos</th>
+                    <th>Regalo</th>
+                    <th>Total pagado</th>
+                    <th>Administrador</th>
+                    <th>Estado</th>
+                    <!-- <th>Administrador</th> -->
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of this.listaRegistrados">
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.nombres }}</td>
+                    <td>{{ item.apellidos }}</td>
+                    <td>{{ item.email }}</td>
+                    <td>{{ momento(item.created_at).format('LLLL') }}</td>
+                    <td>
+                      <ul *ngFor="let iteme of item.pases_articulos" class="articulos">
+                        <li *ngIf="isNan(iteme)">{{ iteme }}</li>
+                      </ul>
+                    </td>
+                    <td>{{ item.regalos.nombre }}</td>
+                    <td>{{ item.total_pagado }}</td>
+                    <td>{{ item.usuarios.nombres }} {{ item.usuarios.apellidos }}</td>
+                    <td *ngIf="item.estado===1; else showEstado">
+                      <span class="btn btn-success btn-xs">Pagado</span>
+                    </td>
+                    <ng-template #showEstado>
+                      <td>
+                        <span class="btn btn-danger btn-xs">No pagado</span>
+                      </td>
+                    </ng-template>
+
+                    <!-- <td>{{ item.usuarios.nombres }} {{ item.usuarios.apellidos }}</td> -->
+
+                    <td class="d-flexbox">
+
+                      <a class=" marginIsquierda" title="Editar Perfil Usuario" data-id="" style="cursor:pointer"
+                        (click)="this.editRegistrado(item.id)"><i
+                          class="fa fa-pencil text-green editarEliminar"></i></a>
+                      <a class=" marginIsquierda" title="Eliminar Perfil" data-id="" style="cursor:pointer"
+                        (click)="this.eliminarRegistrado(item.id)"><i
+                          class="fa fa-trash text-red editarEliminar"></i></a>
+
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </section>

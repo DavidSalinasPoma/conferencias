@@ -205,7 +205,7 @@ export class ListaEventosComponent implements OnInit, OnDestroy {
       if (result.value) {
 
         // Elimninado el registro
-        this.eventoServices.destroyCategoria(idEvento, this.token).subscribe(
+        this.eventoServices.destroyEvento(idEvento, this.token).subscribe(
           response => {
             // console.log(response);
 

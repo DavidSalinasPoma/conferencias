@@ -9,6 +9,6 @@ import { ListaReservaComponent } from '../lista-reserva/lista-reserva.component'
 
 export const registradosRoutes: Routes = [
   { path: 'agregar', component: AgregarReservaComponent },
-  { path: 'edit', component: EditarReservaComponent },
+  { path: 'edit/:id', component: EditarReservaComponent },
   { path: 'lista', component: ListaReservaComponent }
 ];

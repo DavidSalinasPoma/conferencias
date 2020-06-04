@@ -86,7 +86,7 @@ export class EventosService {
   /**
    *  // Destroy elimina un registro de la tabla de datos.
    */
-  public destroyCategoria(idEvento: number, token: any): Observable<any> {
+  public destroyEvento(idEvento: number, token: any): Observable<any> {
 
     const headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
       .set('Authorization', token); // la cabecera de conexion

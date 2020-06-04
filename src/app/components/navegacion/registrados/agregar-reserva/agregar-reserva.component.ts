@@ -56,6 +56,9 @@ export class AgregarReservaComponent implements OnInit {
   // Token del usuario
   public token: object;
 
+  // dias
+  public dia: number;
+
 
   constructor(
     private fb: FormBuilder,
@@ -225,6 +228,8 @@ export class AgregarReservaComponent implements OnInit {
     this.diaViernes = true;
     this.precioViernes = 100;
     this.precioGeneral = 'Viernes - Bs. 100.-';
+    this.dia = 1;
+
     this.diaSabado = false;
     this.diaDomingo = false;
     this.precioSabado = 0;
@@ -237,7 +242,7 @@ export class AgregarReservaComponent implements OnInit {
     this.diaSabado = true;
     this.precioSabado = 150;
     this.precioGeneral = 'Viernes y sabado - Bs. 150.-';
-
+    this.dia = 2;
     this.diaViernes = false;
     this.diaDomingo = false;
     this.precioViernes = 0;
@@ -250,6 +255,7 @@ export class AgregarReservaComponent implements OnInit {
     this.diaDomingo = true;
     this.precioDomingo = 200;
     this.precioGeneral = 'Tres dias - Bs. 200.-';
+    this.dia = 3;
 
     this.diaViernes = false;
     this.diaSabado = false;
@@ -277,6 +283,9 @@ export class AgregarReservaComponent implements OnInit {
     pasesArticulos.push(`1 Pases: ${this.precioGeneral}`);
     pasesArticulos.push(`${camisa} Polera: Bs. ${camisas.toFixed(2)}.-`);
     pasesArticulos.push(`${paquete} Etiquetas: Bs. ${paquetes}.-`);
+    pasesArticulos.push(camisa);
+    pasesArticulos.push(paquete);
+    pasesArticulos.push(this.dia);
 
     const resumenHtml = `
     <ul>

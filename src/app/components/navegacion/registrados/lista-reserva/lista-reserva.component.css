@@ -1,0 +1,11 @@
+@media screen and (max-width: 1442px) {
+  table {
+    display: block;
+    overflow-x: auto;
+  }
+}
+
+.articulos {
+  list-style: none;
+  padding-left: 0;
+}

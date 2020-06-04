@@ -10,7 +10,7 @@ import { EventosService } from '../../../../services/eventos.service';
 import { UserService } from 'src/app/services/user.service';
 
 // DatePicker
-import { IMyDpOptions } from 'mydatepicker';
+// import { IMyDpOptions } from 'mydatepicker';
 
 // Cargar de diferentes maneras Bibliotecas javaScript
 // 1.- NPM
@@ -56,10 +56,10 @@ export class AgregarEventosComponent implements OnInit {
   // Atributos de clase
 
   // Datepicker
-  public myDatePickerOptions: IMyDpOptions = {
-    // other options...
-    dateFormat: 'yyyy-mm-dd',
-  };
+  // public myDatePickerOptions: IMyDpOptions = {
+  //   // other options...
+  //   dateFormat: 'yyyy-mm-dd',
+  // };
 
   // Captura todas las categorias e invitados de la base de datos
   public listCategoria: any[] = [];
